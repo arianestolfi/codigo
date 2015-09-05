@@ -1,0 +1,62 @@
+<html ng-app="app">
+
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="lib/jQuery/dist/jquery.js"></script>
+    <script src="lib/hamsterjs/hamster.js"></script>
+    <script src="lib/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+
+
+    <script src="lib/panzoom/panzoom.js"></script>
+    <script src="lib/panzoom/pointertouch.js"></script>
+    <script src="lib/panzoom/jquery.mousewheel.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="lib/jquery-ui-1.11.4.custom/jquery-ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+
+
+<section ng-controller="pagController" ng-init=>
+
+<div ng-view></div>
+
+
+
+<!--<div id="apoio" ng-mouseleave="apoiocl='estreito'" ng-mouseenter="apoiocl='largo'" ng-class="{{apoiocl}}">
+   <div class="vertical apoio" >apoio</div> 
+    </div>    
+    -->
+<div id="apoio" >
+   <div class="vertical apoio" >apoio</div> 
+    </div>    
+    
+     
+    
+    
+</section>
+
+
+
+</body>
+
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="scripts/controllers/TestController.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="scripts/controllers/app.js"></script>
+<script src="lib/angular-mousewheel/mousewheel.js"></script>
+
+</html>
+
+<!-- http://www.codigorevista.org/dados/service.php/item/ca_objects/id/1?pretty=1
+
+http://www.codigorevista.org/dados/service.php/find/ca_objects?q=*&pretty=1
+
+http://www.codigorevista.org/dados/service.php/find/ca_collections?q=*&pretty=1
+
+http://www.codigorevista.org/dados/service.php/find/ca_entities?q=*&pretty=1
+
+-->

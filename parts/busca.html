@@ -1,0 +1,43 @@
+
+    <div id="fullpage">
+
+        <div id="faixa1" class="par fx" style:="position:relative;">
+            <section id="pagpar">
+                <div id="menupar" class="menu">
+
+                    <input type="text" class="busca">
+
+                    <select ng-model="pagdirpar" class="nav">
+                        <option ng-repeat="item in items | filter:{'type':'revista'}">{{item.inventoryid}}</option>
+                    <option>codigo01</option>
+                    <option>codigo02</option>
+                    <option>codigo03</option>
+                    <option>codigo05</option>
+                    <option>codigo07</option>
+                    <option>codigo08</option>
+                    </select>
+                    
+                    <select ng-model="pagselectpar" class="nav">
+
+                        <option ng-repeat="i in getNumber(numpags) track by $index"><span>{{$index+1}}</span></option>
+
+                        <option ng-repeat="item in items track by $index | filter: {'itemmediadir':pagdirpar}">{{$index+1}}</option>
+                        
+                    </select>
+                    
+                    
+
+
+
+                    <h1></h1>
+                </div>
+        
+            </section>
+        </div>
+   
+
+    
+
+
+    </div>
+  
