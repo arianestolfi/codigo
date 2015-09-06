@@ -14,6 +14,8 @@
                     <option>codigo05</option>
                     <option>codigo07</option>
                     <option>codigo08</option>
+                    <option>codigo09</option>
+                        
                 </select>
 
                 <select ng-model="pagselectpar" class="nav">
@@ -32,13 +34,13 @@
 
                     <button class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
                     <button class="resetpar"><span class="glyphicon glyphicon-fullscreen"></span></button>
-                    <button ng-click="RotateImage('panpar', 1)" class="rotate"><span class="glyphicon glyphicon-repeat"></span></button>
+                    <!--<button ng-click="RotateImage('panpar', 1)" class="rotate"><span class="glyphicon glyphicon-repeat"></span></button>-->
                 </div>
                 
 
 
                 <input type="range" class="zoom-range">
-
+<h5> <a href="busca">busca</a></h5>
 
 
 
@@ -119,6 +121,7 @@
                     <option>codigo05</option>
                     <option>codigo07</option>
                     <option>codigo08</option>
+                    <option>codigo09</option>
 
                 </select>
 
@@ -139,7 +142,7 @@
             <div id="imparcontroll" class="controll impar">
                 <div class="buttons">
                     <button class="prev-pag resetimpar" ng-click="moveimparprev()"><span class="glyphicon glyphicon-arrow-up"></span></button>
-                    <button class="prev-pag resetimpar resetpar"><span class="glyphicon glyphicon-arrow-right" ng-click="movedir()"></span></button>
+                    <button class="prev-pag resetimpar resetpar" ng-click="movedir()"><span  class="glyphicon glyphicon-arrow-right" ></span></button>
                     <button class="prev-pag resetimpar" ng-click="moveimparnext()"><span class="glyphicon glyphicon-arrow-down"></span></button>
                 </div>
             </div>

@@ -34,51 +34,20 @@ app.factory("authenticationSvc", function ($http, $q, $window) {
 
 
 app.controller('pagController', ['$scope', '$window', '$http', function ($scope, $window, $http) {
-    //old vars  
-    //pagnum = 14;
-    //pagnumimpar = 14;
-    //pagpar = 0;
-    //pagimpar = 1;
-    //classparnum = 1;
-    //parpasta = "codigo01";
-    //imparpasta = "codigo01";
-    //tipoimg = "tratadas";
-    //versao = "foto";
-    //var extensao = ".png";
-    $scope.pagnumpar = 14;
-    $scope.pagnumipar = 14;
-    $scope.pagpar = $scope.pagnumpar;
-    $scope.pagimpar = 1;
-    $scope.parpasta = "codigo01";
-    $scope.imparpasta = "codigo01";
-    $scope.tipoimg = "tratadas";
-    $scope.versao = "foto";
-    $scope.extensao = ".png";
-
-    /*var variaveis = "pagnum =" + pagnum + "<br>" + "pagnumimpar =" + pagnumimpar + "<br>" + "pagpar =" + pagpar + "<br>" + "pagimpar =" + pagimpar + "<br>" + "classparnum =" + classparnum + "<br>" + "parpasta = " + parpasta + "<br>" + "imparpasta = " + imparpasta + "<br>" + "tipoimg = " + tipoimg + "<br>" + "versao =" + versao + "<br>" + "extensao = " + extensao;*/
 
 
 
     $scope.pagdirpar = 'codigo01';
     $scope.pagselectpar = 1;
-    $scope.numpagpar = 52;
+    $scope.numpagpar = 32;
 
     $scope.pagdirimpar = 'codigo01';
     $scope.pagselectimpar = 1;
-    $scope.numpagimpar = 52;
+    $scope.numpagimpar = 32;
 
-    /* if ($scope.pagselectimpar > 1) {
-       $scope.previmpar = Number($scope.pagselectimpar)-1;
-     } else {
-       $scope.previmpar = $scope.numpagpar;
-     }
-
-     if ($scope.pagselectimpar < $scope.numpagimpar) {
-       $scope.nextimpar = Number($scope.pagselectimpar)+1;
-     } else {
-       $scope.nextimpar = 1;
-     }*/
-
+    $scope.tipoimg = "tratadas";
+    $scope.versao = "foto";
+    $scope.extensao = ".png";
 
     //move para próxima impar
     $scope.moveimparnext = function (qual) {
@@ -308,8 +277,10 @@ $scope.moveesq = function () {
         };
         $scope.$apply()
     });
-    $http.get('http://localhost/~ASA/teste/scripts/services/items2.json').
-    then(function (response) {
+                            //$http.get('http://localhost/~ASA/providence/service.php/service.php/simple/objects?q=*')
+
+    $http.get('http://localhost/~ASA/codigo/scripts/services/items2.json').
+        then(function (response) {
         // when the response is available
 
         $scope.items = response.data;
@@ -318,6 +289,7 @@ $scope.moveesq = function () {
             $scope.ca_objects.push($scope.items[elem]);
         }
         $scope.numpagpar = $scope.ca_objects.length;
+        console.log($scope.ca_objects);
 
         /*if ($routeParams.itemId > 0) {
           $scope.prevItem = Number($routeParams.itemId)-1;
@@ -348,32 +320,49 @@ $scope.moveesq = function () {
 
 
 
+app.config(function ($routeProvider, $locationProvider) {
 
-
-app.config(['$routeProvider',
-  function ($routeProvider) {
-        $routeProvider.
-        when('/revista', {
+    //$locationProvider.html5Mode(true);
+    $routeProvider
+      .when('/revista', {
             templateUrl: 'parts/dupla.html',
             controller: 'pagController'
         }).
         when('/busca', {
             templateUrl: 'parts/busca.html',
             controller: 'pagController'
+        }).otherwise({templateUrl: 'parts/dupla.html',
+            controller: 'pagController'});
+  });
+
+/*app.config(['$routeProvider',
+  function ($routeProvider) {
+        $routeProvider.
+        when('revista', {
+            templateUrl: 'parts/dupla.html',
+            controller: 'pagController'
+        }).
+        when('busca', {
+            templateUrl: 'parts/busca.html',
+            controller: 'pagController'
         }).
         otherwise({
-            templateUrl: 'parts/dupla.html',
+            templateUrl: 'parts/busca.html',
             controller: 'pagController'
         });
   }]);
-
+*/
 app.filter('numberFixedLen', function () {
     return function (a, b) {
         return (1e4 + a + "").slice(-b)
     }
 });
 
-
+app.filter('numberStr', function () {
+    return function (string) {
+        parseInt(number);
+    }
+});
 
 
 
@@ -385,6 +374,7 @@ app.filter('numberFixedLen', function () {
 
 //- pagina dupla/simples
 //- botão de girar
+// - quase
 //- endereco variaviel
 //http://stackoverflow.com/questions/14301524/in-angular-how-to-redirect-with-location-path-as-http-post-success-callback
 // $location.hash().split('=')[1]
@@ -395,3 +385,5 @@ app.filter('numberFixedLen', function () {
 //- pagina de busca
 //- foto original
 //- html
+
+//direita não funciona no firefox
