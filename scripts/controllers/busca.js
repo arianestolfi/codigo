@@ -1,7 +1,7 @@
 app.controller('buscaController', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
 
 
-    $http.get('http://codigorevista.org/codigo/scripts/services/items2.json').
+    $http.get('/scripts/services/items2.json').
         then(function (response) {
         // when the response is available
 
