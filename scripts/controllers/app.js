@@ -103,11 +103,7 @@ app.filter('numberStr', function () {
 //- pagina dupla/simples
 
 //- botão de girar
-
-
-//- endereco variaviel quando move
-//esquerda/ bug
-
+//endereço muda quando seleciona
 
 //- pagina de busca
 
