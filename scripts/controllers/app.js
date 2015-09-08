@@ -50,7 +50,7 @@ app.factory("authenticationSvc", function ($http, $q, $window) {
 
 
 
-app.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider, $locationProvider, $httpProvider) {
 
     //$locationProvider.html5Mode(true);
     $routeProvider
@@ -63,6 +63,13 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'buscaController'
         }).otherwise({templateUrl: 'parts/dupla.html',
             controller: 'pagController'});
+    
+    $httpProvider.defaults.useXDomain = true;
+$httpProvider.defaults.withCredentials = true;
+delete $httpProvider.defaults.headers.common["X-Requested-With"];
+$httpProvider.defaults.headers.common["Accept"] = "application/json";
+$httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    
   });
 
 /*app.config(['$routeProvider',
