@@ -5,9 +5,9 @@
             <section id="pagpar">
                 <div id="menupar" class="menu">
 
-                    <input type="text" class="busca">
+                    <input type="text" class="busca" ng-model="pesquisa">
 
-                    <select ng-model="pagdirpar" class="nav">
+                    <select ng-model="pesquisa" class="nav">
                         <option ng-repeat="item in items | filter:{'type':'revista'}">{{item.inventoryid}}</option>
                     <option>codigo01</option>
                     <option>codigo02</option>
@@ -32,7 +32,11 @@
                     <h1> <a href="revista">revistas</a></h1>
                     
                     <ul id="indice">
-                        <li ng-repeat="item in items track by $index"><a href="" ng-href="duplas/{{item.collections}}/{{item.idno | filter:numberStr}}"><img ng-src="../revistas/{{item.collections}}/tratadas/{{item.idno}}.png" /></li>
+                        <li ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                            <a href="" ng-href="index.html#&revista={{item.collections}}&indice={{item.idno | filter:numberStr}}">
+                                <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" />
+                            <p class="desc"></p>
+                            </li>
 
                     </ul>
                 </div>

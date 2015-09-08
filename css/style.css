@@ -89,7 +89,7 @@ a:visited {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 200px;
+    height: 50px;
     z-index: 50;
     width: 100%;
     margin: 0;
@@ -445,4 +445,15 @@ width: 100%;
 
 #indice li {
 float: left;
+    width: 100px;
+}
+
+#indice li  a{
+float: left;
+    height:100px;
+    width: 100%;
+}
+
+#indice .minpar a {
+text-align: right;
 }

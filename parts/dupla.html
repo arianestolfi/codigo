@@ -4,9 +4,10 @@
         <section id="pagpar">
             <div id="menupar" class="menu">
 
-                <input type="text" class="busca">
+<!--                <input type="text" class="busca">-->
+                <button><a href="index.html#busca">índice</a></button>
 
-                <select ng-model="pagdirpar" class="nav">
+                <select ng-model="revista" class="nav" ng-change="updateadress()">
                     <option ng-repeat="item in items | filter:{'type':'revista'}">{{item.inventoryid}}</option>
                     <option>codigo01</option>
                     <option>codigo02</option>
@@ -18,9 +19,9 @@
                         
                 </select>
 
-                <select ng-model="pagselectpar" class="nav">
+                <select ng-model="pagpar" class="nav" ng-change="updateadress()">
 
-                    <option ng-repeat="i in getNumber(numpagpar) track by $index"><span>{{$index+1}}</span></option>
+                    <option ng-repeat="i in getNumber(numpagpar) track by $index" ><span>{{$index+1}}</span></option>
 
                     <option ng-repeat="item in items track by $index | filter: {'itemmediadir':pagdirpar}">{{$index+1}}</option>
 
@@ -40,7 +41,7 @@
 
 
                 <input type="range" class="zoom-range">
-<h5> <a href="busca">busca</a></h5>
+<span> <a href="index.html#busca">{{withchdir}}{{witchpage}}</a></span>
 
 
 
@@ -62,7 +63,8 @@
 
             <div  class="parent">
                 <div id="panpar" class="panzoom" style="position:relative">
-                    <img ng-src="../revistas/{{pagdirpar}}/tratadas/{{pagdirpar}}_{{pagselectpar | numberFixedLen:4}}.png">
+                    
+                    <img ng-src="../revistas/{{revista}}/tratadas/{{revista}}_{{pagpar | numberFixedLen:4}}.png">
 
                 </div>
             </div>
@@ -114,7 +116,7 @@
 
 
 
-                <select ng-model="pagdirimpar" class="nav">
+                <select ng-model="revista2" class="nav" ng-change="updateadress()">
                     <option>codigo01</option>
                     <option>codigo02</option>
                     <option>codigo03</option>
@@ -125,13 +127,13 @@
 
                 </select>
 
-                <select ng-model="pagselectimpar" class="nav">
+                <select ng-model="pagimpar" class="nav" ng-change="updateadress()">
 
                     <option ng-repeat="i in getNumber(numpagimpar) track by $index"><span>{{$index+1}}</span></option>
 
                 </select>
 
-                <input type="text" class="busca">
+<!--                <input type="text" class="busca">-->
 
 
 
@@ -141,6 +143,8 @@
 
             <div id="imparcontroll" class="controll impar">
                 <div class="buttons">
+                   
+                    
                     <button class="prev-pag resetimpar" ng-click="moveimparprev()"><span class="glyphicon glyphicon-arrow-up"></span></button>
                     <button class="prev-pag resetimpar resetpar" ng-click="movedir()"><span  class="glyphicon glyphicon-arrow-right" ></span></button>
                     <button class="prev-pag resetimpar" ng-click="moveimparnext()"><span class="glyphicon glyphicon-arrow-down"></span></button>
@@ -151,7 +155,7 @@
             <div class="parent">
                 <div class="panzoom">
 
-                    <img ng-src="../revistas/{{pagdirimpar}}/tratadas/{{pagdirimpar}}_{{pagselectimpar | numberFixedLen:4}}.png">
+                    <img ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png">
                 </div>
             </div>
             <div class="buttons">
