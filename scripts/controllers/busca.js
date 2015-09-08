@@ -2,7 +2,7 @@ app.controller('buscaController', ['$scope', '$window', '$http', '$location', fu
 
 
 
-    $http.get('http://localhost/~ASA/codigo/scripts/services/items2.json').
+    $http.get('http://localhost/codigo/scripts/services/items2.json').
         then(function (response) {
         // when the response is available
 
