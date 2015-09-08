@@ -401,7 +401,7 @@ console.log($scope.revista + " " + fx2num + " " + pagnum);
     });
     //$http.get('http://localhost/~ASA/providence/service.php/service.php/simple/objects?q=*')
 
-    $http.get('http://localhost/codigo/scripts/services/items2.json').
+    $http.get('scripts/services/items2.json').
     then(function (response) {
         // when the response is available
 
