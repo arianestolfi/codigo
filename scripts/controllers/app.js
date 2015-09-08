@@ -14,6 +14,7 @@ function addLeadingZeros (n, length)
 }
 
 
+/*
 app.factory("authenticationSvc", function ($http, $q, $window) {
     var userInfo;
 
@@ -41,6 +42,7 @@ app.factory("authenticationSvc", function ($http, $q, $window) {
         login: login
     };
 });
+*/
 
 
 
