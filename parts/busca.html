@@ -5,10 +5,10 @@
             <section id="pagpar">
                 <div id="menupar" class="menu">
 
-                    <input type="text" class="busca" ng-model="pesquisa" placeholder="pesquise">
+                    <input type="text" class="busca" ng-model="pesquisa">
 
                     <select ng-model="pesquisa" class="nav">
-           
+                        <option ng-repeat="item in items | filter:{'type':'revista'}">{{item.inventoryid}}</option>
                     <option>codigo01</option>
                     <option>codigo02</option>
                     <option>codigo03</option>
@@ -19,7 +19,7 @@
                     
                     <select ng-model="pagselectpar" class="nav">
 
-<!--                        <option ng-repeat="i in getNumber(numpags) track by $index"><span>{{$index+1}}</span></option>-->
+                        <option ng-repeat="i in getNumber(numpags) track by $index"><span>{{$index+1}}</span></option>
 
                         <option ng-repeat="item in items track by $index | filter: {'itemmediadir':pagdirpar}">{{$index+1}}</option>
                         

@@ -1,0 +1,227 @@
+
+    <div id="faixa1" class="par fx" ng-class="{simples: (proporcao < 1)}" style:="position:relative;">
+        <section ng-hide="miniaturas" id="pagpar">
+            <div id="menupar" class="menu">
+
+<!--                <input type="text" class="busca">-->
+                <button class="links " ng-click="miniaturas=true"><a href="index.html#busca">índice</a></button>
+                
+
+                <select ng-model="revista" class="nav" ng-change="updateadress()">
+                    
+                    <option>codigo01</option>
+                    <option>codigo02</option>
+                    <option>codigo03</option>
+                    <option>codigo05</option>
+                    <option>codigo07</option>
+                    <option>codigo08</option>
+                    <option>codigo09</option>
+                    <option>codigo10</option>
+                        
+                </select>
+
+                <select ng-model="pagpar" class="nav" ng-change="updateadress()">
+
+                    <option ng-repeat="i in getNumber(numpagpar) track by $index" ><span>{{$index+1}}</span></option>
+
+                    <option ng-repeat="item in items track by $index | filter: {'itemmediadir':pagdirpar}">{{$index+1}}</option>
+
+                </select>
+
+
+
+
+                <div class="buttons">
+                    <button class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
+
+                    <button class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button class="resetpar"><span class="glyphicon glyphicon-fullscreen"></span></button>
+                    <!--<button ng-click="RotateImage('panpar', 1)" class="rotate"><span class="glyphicon glyphicon-repeat"></span></button>-->
+                </div>
+                
+
+
+                <input type="range" class="zoom-range">
+<span> <a href="index.html#busca">{{withchdir}}{{witchpage}}</a></span>
+
+
+
+
+
+                <h1></h1>
+            </div>
+
+            <div id="parcontroll" class="controll par">
+                <div class="buttons">
+                    <button class="prev-pag resetpar" ng-click="moveparprev()"><span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                    <button class="next-pag resetpar resetimpar" ng-click="moveesq()"><span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                    <button class="prev-pag resetpar" ng-click="moveparnext()"><span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div  class="parent">
+                <div id="panpar" class="panzoom" style="position:relative">
+                    
+                    <img ng-src="../revistas/{{revista}}/tratadas/{{revista}}_{{pagpar | numberFixedLen:4}}.png">
+
+                </div>
+            </div>
+            <script>
+                (function() {
+                    var $section = $('#pagpar');
+                    var $panzoom = $section.find('.panzoom').panzoom({
+                        $zoomIn: $section.find(".zoom-in"),
+                        $zoomOut: $section.find(".zoom-out"),
+                        $zoomRange: $section.find(".zoom-range"),
+                        $reset: $(".resetpar"),
+                        startTransform: 'scale(1)',
+                        maxScale: 50,
+                        increment: 0.5,
+                    });
+                                        
+                    $panzoom.parent().on('mousewheel.focal', function(e) {
+                        e.preventDefault();
+                        var delta = e.delta || e.originalEvent.wheelDelta;
+                        var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                        $panzoom.panzoom('zoom', zoomOut, {
+                            increment: 0.1,
+                            animate: false,
+                            focal: e
+                        });
+                    });
+                })();
+                
+                
+            </script>
+                    
+            
+        </section>
+        <div ng-show="miniaturas" id="indice">
+            <input type="text" class="busca" ng-model="pesquisa" placeholder="pesquise">
+
+                    <select ng-model="pesquisa" class="nav">
+           
+                    <option>codigo01</option>
+                    <option>codigo02</option>
+                    <option>codigo03</option>
+                    <option>codigo05</option>
+                    <option>codigo07</option>
+                    <option>codigo08</option>
+                    </select>
+                    
+            <select ng-model="pagselectpar" class="nav"></select>
+                            <ul id="indicein">
+                        <li ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                            <a  href="" ng-href="index.html#&revista={{item.collections}}&indice={{item.idno | filter:numberStr}}" ng-click="$parent.miniaturas=false; $parent.revista= item.collections ;$parent.pagpar=item.idno">
+                                <img   src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png" />
+                            <p class="desc"></p>
+                            </li>
+
+                    </ul>
+        
+        
+        </div>
+        
+        
+    </div>
+
+
+
+<div id="faixa2" class="impar fx" ng-show="proporcao>1">
+        <section id="pagimpar">
+            <div id="menuimpar" class="menu">
+
+
+
+
+                <input type="range" class="zoom-range">
+                <div class="buttons">
+                    <button class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
+                    <button class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button class="resetimpar"><span class="glyphicon glyphicon-fullscreen"></span></button>
+                </div>
+
+
+
+                <select ng-model="revista2" class="nav" ng-change="updateadress()">
+                    <option>codigo01</option>
+                    <option>codigo02</option>
+                    <option>codigo03</option>
+                    <option>codigo05</option>
+                    <option>codigo07</option>
+                    <option>codigo08</option>
+                    <option>codigo09</option>
+                    <option>codigo10</option>
+
+                </select>
+
+                <select ng-model="pagimpar" class="nav" ng-change="updateadress()">
+
+                    <option ng-repeat="i in getNumber(numpagimpar) track by $index"><span>{{$index+1}}</span></option>
+
+                </select>
+
+<!--                <input type="text" class="busca">-->
+
+
+
+            </div>
+
+
+
+            <div id="imparcontroll" class="controll impar">
+                <div class="buttons">
+                   
+                    
+                    <button class="prev-pag resetimpar" ng-click="moveimparprev()"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                    <button class="prev-pag resetimpar resetpar" ng-click="movedir()"><span  class="glyphicon glyphicon-arrow-right" ></span></button>
+                    <button class="prev-pag resetimpar" ng-click="moveimparnext()"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                </div>
+            </div>
+
+
+            <div class="parent">
+                <div class="panzoom">
+
+                    <img ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png">
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="zoom-in">Zoom In</button>
+                <button class="zoom-out">Zoom Out</button>
+                <input type="range" class="zoom-range">
+                <button class="reset">Reset</button>
+            </div>
+            <script>
+                (function() {
+                    var $section = $('#pagimpar');
+                    var $panzoom = $section.find('.panzoom').panzoom({
+                        $zoomIn: $section.find(".zoom-in"),
+                        $zoomOut: $section.find(".zoom-out"),
+                        $zoomRange: $section.find(".zoom-range"),
+                        $reset: $(".resetimpar"),
+                        startTransform: 'scale(1)',
+                        maxScale: 50,
+                        increment: 0.5,
+                    });
+                    $panzoom.parent().on('mousewheel.focal', function(e) {
+                        e.preventDefault();
+                        var delta = e.delta || e.originalEvent.wheelDelta;
+                        var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                        $panzoom.panzoom('zoom', zoomOut, {
+                            increment: 0.1,
+                            animate: false,
+                            focal: e
+                        });
+                    });
+                })();
+            </script>
+        </section>
+
+
+
+    </div>
+</div>

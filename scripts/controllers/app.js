@@ -112,10 +112,9 @@ app.filter('numberStr', function () {
 //- pagina dupla/simples
 
 //- botão de girar
+//endereço muda quando seleciona
 
-//- busca dentro da div
-
-//- parametros do zoom na url
+//- pagina de busca
 
 
 //- foto original

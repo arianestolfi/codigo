@@ -1,0 +1,94 @@
+<div id="faixa2" class="impar fx" ng-show="proporcao>1">
+        <section id="pagimpar">
+            <div id="menuimpar" class="menu">
+
+
+
+
+                <input type="range" class="zoom-range">
+                <div class="buttons">
+                    <button class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
+                    <button class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button class="resetimpar"><span class="glyphicon glyphicon-fullscreen"></span></button>
+                </div>
+
+
+
+                <select ng-model="revista2" class="nav" ng-change="updateadress()">
+                    <option>codigo01</option>
+                    <option>codigo02</option>
+                    <option>codigo03</option>
+                    <option>codigo05</option>
+                    <option>codigo07</option>
+                    <option>codigo08</option>
+                    <option>codigo09</option>
+
+                </select>
+
+                <select ng-model="pagimpar" class="nav" ng-change="updateadress()">
+
+                    <option ng-repeat="i in getNumber(numpagimpar) track by $index"><span>{{$index+1}}</span></option>
+
+                </select>
+
+<!--                <input type="text" class="busca">-->
+
+
+
+            </div>
+
+
+
+            <div id="imparcontroll" class="controll impar">
+                <div class="buttons">
+                   
+                    
+                    <button class="prev-pag resetimpar" ng-click="moveimparprev()"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                    <button class="prev-pag resetimpar resetpar" ng-click="movedir()"><span  class="glyphicon glyphicon-arrow-right" ></span></button>
+                    <button class="prev-pag resetimpar" ng-click="moveimparnext()"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                </div>
+            </div>
+
+
+            <div class="parent">
+                <div class="panzoom">
+
+                    <img ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png">
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="zoom-in">Zoom In</button>
+                <button class="zoom-out">Zoom Out</button>
+                <input type="range" class="zoom-range">
+                <button class="reset">Reset</button>
+            </div>
+            <script>
+                (function() {
+                    var $section = $('#pagimpar');
+                    var $panzoom = $section.find('.panzoom').panzoom({
+                        $zoomIn: $section.find(".zoom-in"),
+                        $zoomOut: $section.find(".zoom-out"),
+                        $zoomRange: $section.find(".zoom-range"),
+                        $reset: $(".resetimpar"),
+                        startTransform: 'scale(1)',
+                        maxScale: 50,
+                        increment: 0.5,
+                    });
+                    $panzoom.parent().on('mousewheel.focal', function(e) {
+                        e.preventDefault();
+                        var delta = e.delta || e.originalEvent.wheelDelta;
+                        var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                        $panzoom.panzoom('zoom', zoomOut, {
+                            increment: 0.1,
+                            animate: false,
+                            focal: e
+                        });
+                    });
+                })();
+            </script>
+        </section>
+
+
+
+    </div>
+</div>
