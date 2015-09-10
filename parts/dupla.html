@@ -1,13 +1,16 @@
-<div id="fullpage">
+<div id="fullpage" ng-init="thumbs=false">
 
     <div id="faixa1" class="par fx" ng-class="{simples: (proporcao < 1)}" style:="position:relative;">
         <section id="pagpar">
             <div id="menupar" class="menu">
 
 <!--                <input type="text" class="busca">-->
+<!--
                 <button><a href="index.html#busca">índice</a></button>
+-->
+                <button ng-click="visible=true" ng-hide="visible" class="control">índice</button>
 
-                <select ng-model="revista" class="nav" ng-change="updateadress()">
+                <select ng-model="revista" class="nav" ng-change="updateadress()" ng-hide="visible">
                     <option ng-repeat="item in items | filter:{'type':'revista'}">{{item.inventoryid}}</option>
                     <option>codigo01</option>
                     <option>codigo02</option>
@@ -16,7 +19,6 @@
                     <option>codigo07</option>
                     <option>codigo08</option>
                     <option>codigo09</option>
-                        
                 </select>
 
                 <select ng-model="pagpar" class="nav" ng-change="updateadress()">
@@ -29,19 +31,29 @@
 
 
 
-
-                <div class="buttons">
+                <input type="text" class="busca" placeholder="pesquise" ng-model="pesquisa" ng-show="visible">
+                
+                <select ng-model="pesquisa" class="nav" ng-show="visible">
+                    <option>codigo01</option>
+                    <option>codigo02</option>
+                    <option>codigo03</option>
+                    <option>codigo05</option>
+                    <option>codigo07</option>
+                    <option>codigo08</option>
+                    </select>
+                
+                <div class="buttons" ng-hide="visible">
                     <button class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
 
                     <button class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
                     <button class="resetpar"><span class="glyphicon glyphicon-fullscreen"></span></button>
-                    <!--<button ng-click="RotateImage('panpar', 1)" class="rotate"><span class="glyphicon glyphicon-repeat"></span></button>-->
+                    
                 </div>
-                
+             <!--<button ng-click="RotateImage('panpar', 1)" class="rotate"><span class="glyphicon glyphicon-repeat"></span></button>-->   
 
+<!--
+                <input type="range" class="zoom-range">-->
 
-                <input type="range" class="zoom-range">
-<span> <a href="index.html#busca">{{withchdir}}{{witchpage}}</a></span>
 
 
 
@@ -50,7 +62,7 @@
                 <h1></h1>
             </div>
 
-            <div id="parcontroll" class="controll par">
+            <div id="parcontroll" class="controll par" ng-hide="visible" ng-hide="visible">
                 <div class="buttons">
                     <button class="prev-pag resetpar" ng-click="moveparprev()"><span class="glyphicon glyphicon-arrow-up"></span>
                     </button>
@@ -61,8 +73,23 @@
                 </div>
             </div>
 
+             <div id="miniaturaspar" ng-init="visible = false" ng-show="visible" class="miniaturas">
+                 <ul id="indice">
+                        <li ng-click="$parent.visible=false" ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                            <a href="" ng-href="index.html#&revista={{item.collections}}&indice={{item.idno | filter:numberStr}}" >
+                                <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" />
+                            <p class="desc"></p>
+                            </li>
+
+                    </ul>
+                
+                </div>
+            
             <div  class="parent">
-                <div id="panpar" class="panzoom" style="position:relative">
+               
+                
+                
+                <div id="panpar" class="panzoom" style="position:relative" ng-hide="visible">
                     
                     <img ng-src="../revistas/{{revista}}/tratadas/{{revista}}_{{pagpar | numberFixedLen:4}}.png">
 
