@@ -42,6 +42,13 @@
                     <option>codigo08</option>
                     </select>
                 
+                    <select ng-model="tipo" class="nav" ng-show="visible">
+                    <option>tratadas</option>
+                    <option>fotos</option>
+                    <option>texto</option>
+                    </select>
+                
+                
                 <div class="buttons" ng-hide="visible">
                     <button class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
 
@@ -49,10 +56,10 @@
                     <button class="resetpar"><span class="glyphicon glyphicon-fullscreen"></span></button>
                     
                 </div><br>
-                <div class="buttons"><input type="range" class="zoom-range" ng-hide="visible"></div>
+                <div class="buttons"></div>
              <!--<button ng-click="RotateImage('panpar', 1)" class="rotate"><span class="glyphicon glyphicon-repeat"></span></button>-->   
 
-<!--
+<!--<input type="range" class="zoom-range" ng-hide="visible">
                 -->
 
 
@@ -78,15 +85,14 @@
                  <ul id="indice">
                         <li ng-click="$parent.visible=false" ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                             <a href="" ng-href="index.html#&revista={{item.collections}}&indice={{item.idno | filter:numberStr}}" >
-                                <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" />
-                            <p class="desc"></p>
+                                <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" /></a>
                             </li>
 
                     </ul>
                 
                 </div>
             
-            <div  class="parent">
+            <div  class="parent" >
                
                 
                 
@@ -135,7 +141,6 @@
 
 
 
-                <input type="range" class="zoom-range">
                 <div class="buttons">
                     <button class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
                     <button class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
@@ -189,7 +194,6 @@
             <div class="buttons">
                 <button class="zoom-in">Zoom In</button>
                 <button class="zoom-out">Zoom Out</button>
-                <input type="range" class="zoom-range">
                 <button class="reset">Reset</button>
             </div>
             <script>
@@ -222,3 +226,44 @@
 
     </div>
 </div>
+
+<div id="slider">&nbsp;
+</div>
+
+
+<script>
+ $( "#slider" ).draggable({
+      axis: "x", 
+      start: function() {
+        
+      },
+      drag: function() {
+        updatedivsize(  );
+      },
+      stop: function() {
+        
+      }
+    });
+
+    function updatedivsize(  ) {
+      // first update the status visually...
+        var largura = $(window).width();
+        var largurafaixa = largura - 10;
+        largurafaixa = largurafaixa /2;
+        largurafaixa = largurafaixa + 'px';
+        var posicao = $("#slider").position();
+      var ladopar = posicao.left + 'px';
+        var ladoimpar = posicao.left + 'px';
+        var largurapar = largura - posicao.left;
+        $("#faixa1").css('position', 'absolute');
+        $("#faixa1").css('right', ladopar);
+        $("#faixa1").css('left', '0');
+        //$("#faixa1").css('width', 'auto');
+        $("#faixa2").css('left', ladoimpar);
+        $("#faixa2").css('right', '0');
+        $("#faixa2").css('width', largurapar);
+        
+        
+    }
+    
+</script>

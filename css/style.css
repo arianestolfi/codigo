@@ -237,19 +237,18 @@ text-align: right;
 position: absolute;
     top: 0;
     bottom: 0;
-    
-    width: 30px;
+    width: 25px;
     height: 30%;
     margin: auto;
     z-index: 500;
 }
 
 .controll.impar {
-right:0;
+right:5px;
 }
 
-.controll .par {
-left: 0;
+.controll.par {
+left: 5px;
 }
 
 
@@ -294,7 +293,11 @@ input[type=range] {
     display: inline;
     width: 120px;
     margin: 10px 0;
+
 }
+
+
+
 input[type=range]:focus {
     outline: none;
 }
@@ -486,4 +489,13 @@ width: 100%;
 position: absolute;
     width: 50%;
 z-index: 600;
+}
+
+#slider {
+width: 10px;
+    height: 100%;
+background-color:#f00;
+    position: absolute;
+    left: 50%;
+z-index: 500px;
 }
