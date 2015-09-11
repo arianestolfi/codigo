@@ -225,10 +225,11 @@
 
 
     </div>
+    <div id="slider">&nbsp;
+</div>
 </div>
 
-<div id="slider">&nbsp;
-</div>
+
 
 
 <script>
@@ -252,17 +253,18 @@
         largurafaixa = largurafaixa /2;
         largurafaixa = largurafaixa + 'px';
         var posicao = $("#slider").position();
-      var ladopar = posicao.left + 'px';
+      var ladopar = largura - posicao.left;
         var ladoimpar = posicao.left + 'px';
         var largurapar = largura - posicao.left;
         $("#faixa1").css('position', 'absolute');
-        $("#faixa1").css('right', ladopar);
+        $("#faixa1").css('width', posicao.left);
         $("#faixa1").css('left', '0');
         //$("#faixa1").css('width', 'auto');
         $("#faixa2").css('left', ladoimpar);
         $("#faixa2").css('right', '0');
         $("#faixa2").css('width', largurapar);
-        
+        //$("#fullpage img").css('height', 'auto');
+        //$("#fullpage img").css('width', '100%');
         
     }
     
