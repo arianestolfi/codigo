@@ -8,3 +8,19 @@ A finalidade do projeto é propor uma interface de navegação que fuja da liena
 O modelo de navegação proposta permite diferentes percursos pelo material, com a possibilidade de livre recombinação das páginas ao mesmo tempo que permite a navegação tradicional de maneira linear pelas páginas duplas originais.
 
 
+
+
+recursos implementados:
+. navegação horizontal/vertical
+. página simples quando vertical
+. zoom
+. página de busca
+. endereço dinâmico
+. integração odigo JSON
+
+
+a fazer
+. conecção com collectiveaccess
+. extracódigo
+. fotos originais
+. html

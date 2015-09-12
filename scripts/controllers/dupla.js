@@ -1,8 +1,8 @@
 app.controller('pagController', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
 
     //número de elementos no loop    
-    $scope.numpagpar = 12;
-    $scope.numpagimpar = 12;
+    $scope.numpagpar = 40;
+    $scope.numpagimpar = 40;
 
     var selstrpar = addLeadingZeros($scope.numpagpar, 4);
     var selstrimpar = 0001;

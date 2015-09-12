@@ -109,7 +109,7 @@ app.filter('numberStr', function () {
 
 //
 
-//- pagina dupla/simples
+//- redimensionamento das faixas
 
 //- botão de girar
 //endereço muda quando seleciona
