@@ -126,3 +126,7 @@ app.filter('numberStr', function () {
 
 //ca_objects
 //http://www.codigorevista.org/dados/service.php/simple/objects?q=*&pretty=1
+
+//mysqldump -h banco.codigorevista.org -u codigoxyz -p --default-character-set=utf8 --result-file=backupcodigoutf8.sql codigorevista
+
+//¬†
