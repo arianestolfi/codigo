@@ -480,6 +480,10 @@ float: left;
 
 }
 
+#indice .minimpar a {
+text-align: left;
+}
+
 #indice .minpar a {
 text-align: right;
 }

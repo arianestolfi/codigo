@@ -1,5 +1,20 @@
 app.controller('pagController', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
 
+    
+    $http.get('http://api:codigo@localhost/~ASA/providence/service.php/simple/objects?q=*&pretty=1').
+      then(function(response) {
+        // when the response is available
+        $scope.dados = response.data;
+        console.log($scope.dados);
+        $scope.ca_objects = [];
+        for (elem in $scope.dados) {
+            $scope.ca_objects.push($scope.dados[elem]);
+        }
+        //ok
+      }, function(response) {
+        // error.
+      });
+    
     //número de elementos no loop    
     $scope.numpagpar = 40;
     $scope.numpagimpar = 40;
@@ -38,7 +53,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
                 params[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
             }
         }
-        console.log(params);
+        //console.log(params);
 
 
         //se tem revista
@@ -368,15 +383,7 @@ console.log($scope.revista + " " + fx2num + " " + pagnum);
         return new Array(num);
     }
 
-    /*$http.get('http://localhost/providence/service.php/simple/testSearch?q=*').
-      then(function(response) {
-        // when the response is available
-        $scope.items = response.data;
-        console.log(response.data);
-        //ok
-      }, function(response) {
-        // error.
-      });*/
+    
 
     //checa proporção da página
     $scope.altura = $window.innerHeight;
@@ -401,6 +408,7 @@ console.log($scope.revista + " " + fx2num + " " + pagnum);
     });
     //$http.get('http://localhost/~ASA/providence/service.php/service.php/simple/objects?q=*')
 
+/*
     $http.get('scripts/services/objects.json').
     then(function (response) {
         // when the response is available
@@ -413,23 +421,24 @@ console.log($scope.revista + " " + fx2num + " " + pagnum);
         //$scope.numpagpar = $scope.ca_objects.length;
         //console.log($scope.ca_objects);
 
-        /*if ($routeParams.itemId > 0) {
-          $scope.prevItem = Number($routeParams.itemId)-1;
-        } else {
-          $scope.prevItem = $scope.artists.length-1;
-        }
-
-        if ($routeParams.itemId < $scope.artists.length-1) {
-          $scope.nextItem = Number($routeParams.itemId)+1;
-        } else {
-          $scope.nextItem = 0;
-        }   */
+//        if ($routeParams.itemId > 0) {
+//          $scope.prevItem = Number($routeParams.itemId)-1;
+//        } else {
+//          $scope.prevItem = $scope.artists.length-1;
+//        }
+//
+//        if ($routeParams.itemId < $scope.artists.length-1) {
+//          $scope.nextItem = Number($routeParams.itemId)+1;
+//        } else {
+//          $scope.nextItem = 0;
+//        }   
 
 
         //ok
     }, function (response) {
         // error.
     });
+*/
 
 
 

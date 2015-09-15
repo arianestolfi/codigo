@@ -14,14 +14,14 @@ function addLeadingZeros (n, length)
 }
 
 
-/*
+
 app.factory("authenticationSvc", function ($http, $q, $window) {
     var userInfo;
 
     function login(userName, password) {
         var deferred = $q.defer();
 
-        $http.post("/api/login", {
+        $http.post("http://api:codigo@localhost/providence/service.php/auth/login", {
             userName: administrator,
             password: dublincore
         }).then(function (result) {
@@ -31,8 +31,10 @@ app.factory("authenticationSvc", function ($http, $q, $window) {
             };
             $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
             deferred.resolve(userInfo);
+            console.log('ok');
         }, function (error) {
             deferred.reject(error);
+            console.log('no');
         });
 
         return deferred.promise;
@@ -42,7 +44,7 @@ app.factory("authenticationSvc", function ($http, $q, $window) {
         login: login
     };
 });
-*/
+
 
 
 
