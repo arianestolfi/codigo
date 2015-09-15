@@ -1,7 +1,7 @@
 app.controller('pagController', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
 
     
-    $http.get('http://api:codigo@localhost/~ASA/providence/service.php/simple/objects?q=*&pretty=1').
+    $http.get('http://api:codigo@localhost/dados/service.php/simple/objects?q=*&pretty=1').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
