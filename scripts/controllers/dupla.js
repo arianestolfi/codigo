@@ -1,7 +1,21 @@
 app.controller('pagController', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
 
     
-    $http.get('http://api:codigo@localhost/dados/service.php/simple/objects?q=*&pretty=1').
+/*    $http.get('http://api:codigo@localhost/dados/service.php/simple/objects?q=*&pretty=1').
+      then(function(response) {
+        // when the response is available
+        $scope.dados = response.data;
+        console.log($scope.dados);
+        $scope.ca_objects = [];
+        for (elem in $scope.dados) {
+            $scope.ca_objects.push($scope.dados[elem]);
+        }
+        //ok
+      }, function(response) {
+        // error.
+      });*/
+    
+$http.get('../dados/service.php/simple/objects?q=*&pretty=1').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
@@ -14,7 +28,6 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
       }, function(response) {
         // error.
       });
-    
     //número de elementos no loop    
     $scope.numpagpar = 40;
     $scope.numpagimpar = 40;
