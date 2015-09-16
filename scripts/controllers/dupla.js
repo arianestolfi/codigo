@@ -15,7 +15,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
         // error.
       });*/
     
-$http.get('http://localhots/dados/service.php/simple/objects?q=*').
+$http.get('http://localhost/dados/service.php/simple/objects?q=*').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
