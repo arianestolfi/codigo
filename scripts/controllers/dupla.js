@@ -15,7 +15,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
         // error.
       });*/
     
-$http.get('../dados/service.php/simple/objects?q=*&pretty=1').
+$http.get('http://administrator:dublincore@localhost/dados/service.php/auth/login').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
