@@ -16,13 +16,14 @@ function addLeadingZeros (n, length)
 
 
 
+
 app.factory("authenticationSvc", function ($http, $q, $window) {
     var userInfo;
 
     function login(userName, password) {
         var deferred = $q.defer();
 
-        $http.post("../dados/service.php/auth/login", {
+        $http.post("http://localhost/dados/service.php/auth/login", {
             userName: administrator,
             password: dublincore
         }).then(function (result) {
