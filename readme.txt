@@ -17,10 +17,12 @@ recursos implementados:
 . página de busca
 . endereço dinâmico
 . integração odigo JSON
+. conecção com collectiveaccess
+. variação da largura das páginas
 
 
 a fazer
-. conecção com collectiveaccess
+. filtragem por coleção
 . extracódigo
 . fotos originais
 . html

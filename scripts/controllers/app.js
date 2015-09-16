@@ -21,9 +21,9 @@ app.factory("authenticationSvc", function ($http, $q, $window) {
     function login(userName, password) {
         var deferred = $q.defer();
 
-        $http.post("http://api:codigo@localhost/dados/service.php/auth/login", {
-            userName: administrator,
-            password: dublincore
+        $http.post("http://localhost/dados/service.php/auth/login", {
+            userName: api,
+            password: codigo
         }).then(function (result) {
             userInfo = {
                 accessToken: result.data.access_token,
