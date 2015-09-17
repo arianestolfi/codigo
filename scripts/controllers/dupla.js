@@ -15,7 +15,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
         // error.
       });*/
     
-$http.get('http://www.codigorevista.org/dados/service.php/simple/objects?q=*').
+$http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;

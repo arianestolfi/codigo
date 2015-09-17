@@ -23,7 +23,7 @@ app.factory("authenticationSvc", function ($http, $q, $window) {
     function login(userName, password) {
         var deferred = $q.defer();
 
-        $http.post("http://www.codigorevista.org/dados/service.php/auth/login", {
+        $http.post("http://codigorevista.org/dados/service.php/auth/login", {
             userName: administrator,
             password: dublincore
         }).then(function (result) {
