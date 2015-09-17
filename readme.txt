@@ -22,6 +22,7 @@ recursos implementados:
 
 
 a fazer
+. autenticação
 . filtragem por coleção
 . extracódigo
 . fotos originais
