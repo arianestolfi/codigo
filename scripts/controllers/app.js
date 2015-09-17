@@ -17,42 +17,6 @@ function addLeadingZeros (n, length)
 
 
 
-/*
-app.factory("authenticationSvc", function ($http, $q, $window) {
-    var userInfo;
-
-    function login(userName, password) {
-        var deferred = $q.defer();
-
-        $http.post("http://codigorevista.org/dados/service.php/auth/login", {
-            //userName: username,
-            //password: passw
-        }).then(function (result) {
-            userInfo = {
-                accessToken: result.data.access_token,
-                userName: result.data.userName
-            };
-            $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
-            deferred.resolve(userInfo);
-            console.log('ok');
-        }, function (error) {
-            deferred.reject(error);
-            console.log('no');
-        });
-
-        return deferred.promise;
-    }
-
-    return {
-        login: login
-    };
-});
-*/
-
-
-
-
-
 //testController end  
 
 
