@@ -18,7 +18,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
 
     
     
-    $http.get('http://api:codigo@codigorevista.org/dados/service.php/simple/objects?q=*').
+    $http.get('http://administrator:dublincore@codigorevista.org/dados/service.php/simple/objects?q=*').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
