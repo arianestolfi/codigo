@@ -72,7 +72,11 @@ app.filter('numberStr', function () {
     }
 });
 
-
+app.filter('rawHtml', ['$sce', function($sce){
+  return function(val) {
+    return $sce.trustAsHtml(val);
+  };
+}]);
 
 
 
@@ -81,6 +85,9 @@ app.filter('numberStr', function () {
 //
 
 //- redimensionamento das faixas
+//- mudar zoom só do seu lado para cima e para baixo
+//- sumir o menu
+
 
 //- botão de girar
 //endereço muda quando seleciona
@@ -101,3 +108,5 @@ app.filter('numberStr', function () {
 //mysqldump -h banco.codigorevista.org -u codigoxyz -p --default-character-set=utf8 --result-file=backupcodigoutf8.sql codigorevista
 
 //¬†
+
+//http://www.webdeveasy.com/javascript-promises-and-angularjs-q-service/

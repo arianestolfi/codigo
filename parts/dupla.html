@@ -1,4 +1,4 @@
-<div id="fullpage" ng-init="thumbs=false">
+<div id="fullpage" ng-init="thumbs=false" ng-init= "pagimpar = 1">
 
     <div id="faixa1" class="par fx" ng-class="{simples: (proporcao < 1)}" style:="position:relative;">
         <section id="pagpar">
@@ -23,13 +23,18 @@
                 </select>
 
                 <select ng-model="pagpar" class="nav" ng-change="updateadress()">
+                    
+                    <!--<div ng-repeat="person in filtered = (data | filter: query)">-->
+                        
 
-                    <option ng-repeat="i in getNumber(numpagpar) track by $index" ><span>{{$index+1}}</span></option>
-
-                    <option ng-repeat="item in items track by $index | filter: {'itemmediadir':pagdirpar}">{{$index+1}}</option>
+                    <option ng-repeat="paginas in (exemplar = (ca_objects | filter:{'collections':revista})) track by $index ">{{$index+1}}</option>
 
                 </select>
-
+                <select ng-model="tipo" class="nav" ng-hide="visible">
+                    <option>imagem</option>
+                    <!--<option>fotos</option>-->
+                    <option>texto</option>
+                    </select>
 
 
                 <input type="text" class="busca" placeholder="pesquise" ng-model="pesquisa" ng-show="visible">
@@ -45,11 +50,7 @@
                     <option>codigo10</option>
                     </select>
                 
-                    <select ng-model="tipo" class="nav" ng-show="visible">
-                    <option>tratadas</option>
-                    <option>fotos</option>
-                    <option>texto</option>
-                    </select>
+                    
                 
                 
                 <div class="buttons" ng-hide="visible">
@@ -59,6 +60,8 @@
                     <button class="resetpar"><span class="glyphicon glyphicon-fullscreen"></span></button>
                     
                 </div><br>
+                
+                
                 <div class="buttons"></div>
              <!--<button ng-click="RotateImage('panpar', 1)" class="rotate"><span class="glyphicon glyphicon-repeat"></span></button>-->   
 
@@ -70,7 +73,7 @@
 
 
 
-                <h1></h1>
+                
             </div>
 
             <div id="parcontroll" class="controll par" ng-hide="visible" ng-hide="visible">
@@ -87,7 +90,7 @@
              <div id="miniaturaspar" ng-init="visible = false" ng-show="visible" class="miniaturas">
                  <ul id="indice">
                         <li ng-click="$parent.visible=false" ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
-                            <a href="" ng-href="index.html#&revista={{item.collections}}&indice={{item.idno | filter:numberStr}}" >
+                            <a href="" ng-href="index.html#&indice={{item.idno}}" >
                                 <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" /></a>
                             </li>
 
@@ -99,11 +102,24 @@
                
                 
                 
-                <div id="panpar" class="panzoom" style="position:relative" ng-hide="visible">
+                <div id="panpar" class="panzoom" style="position:relative" ng-hide="visible || tipo == 'texto'" >
                     
                     <img ng-src="../revistas/{{revista}}/tratadas/{{revista}}_{{pagpar | numberFixedLen:4}}.png">
 
                 </div>
+                
+                <div class="faixa" ng-repeat="info in ca_objects | filter: {'idno':indice}" ng-hide="visible">
+                <div class="info" ng-show="tipo == 'texto'" >
+                            
+                    
+                    <article class="description" ng-bind-html= "info.description | rawHtml">{{}}</article>
+                    <h3 class="autor">{{info.entities}}</h3>
+                </div>
+            
+            
+            
+            </div>
+                
             </div>
             <script>
                 (function() {
@@ -165,9 +181,15 @@
 
                 <select ng-model="pagimpar" class="nav" ng-change="updateadress()">
 
-                    <option ng-repeat="i in getNumber(numpagimpar) track by $index"><span>{{$index+1}}</span></option>
-
+<!--                    <option ng-repeat="i in getNumber(numpagimpar) track by $index"><span>{{$index+1}}</span></option>-->
+<option ng-repeat="paginas2 in exemplar2 = (ca_objects | filter:{'collections':revista2}) track by $index ">{{$index+1}}</option>
                 </select>
+                    <select ng-model="tipo2" class="nav" >
+                    <option>imagem</option>
+                    <option>texto</option>
+                    <!--<option>original</option>-->
+                    
+                    </select>
 
 <!--                <input type="text" class="busca">-->
 
@@ -188,17 +210,33 @@
             </div>
 
 
-            <div class="parent">
-                <div class="panzoom">
-
-                    <img ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png">
+           
+                
+                <div class="parent">
+                
+                <div class="panzoom" ng-hide="tipo2 == 'texto'">
+                    <img ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png" >
+               
+                    
+                    
+                    </div>
+                
+                
+            </div>
+             <div class="faixa" ng-repeat="info in ca_objects | filter: {'idno':indice2}" >
+                <div class="info" ng-show="tipo2 == 'texto'" >
+                            
+                    
+                    <article class="description" ng-bind-html= "info.description | rawHtml">{{}}</article>
+                    <h3 class="autor">{{info.entities}}</h3>
                 </div>
+            
+            
+            
             </div>
-            <div class="buttons">
-                <button class="zoom-in">Zoom In</button>
-                <button class="zoom-out">Zoom Out</button>
-                <button class="reset">Reset</button>
-            </div>
+            
+            
+            
             <script>
                 (function() {
                     var $section = $('#pagimpar');

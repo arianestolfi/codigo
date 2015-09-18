@@ -1,46 +1,70 @@
-app.controller('pagController', ['$scope', '$window', '$http', '$location', function ($scope, $window, $http, $location) {
+app.controller('pagController', ['$scope', '$window', '$http', '$location', '$filter', function ($scope, $window, $http, $location, $filter ) {
 
+  
     
-/*    $http.get('http://api:codigo@localhost/dados/service.php/simple/objects?q=*&pretty=1').
+    //$http.get('http://localhost/dados/service.php/simple/objects?q=*').
+    //$http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
+    $http.get('scripts/services/objects.json').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
-        console.log($scope.dados);
+        //console.log($scope.dados);
         $scope.ca_objects = [];
         for (elem in $scope.dados) {
             $scope.ca_objects.push($scope.dados[elem]);
         }
         //ok
-      }, function(response) {
-        // error.
-      });*/
-    
-
-    
-    
-    $http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
-      then(function(response) {
-        // when the response is available
-        $scope.dados = response.data;
-        console.log($scope.dados);
-        $scope.ca_objects = [];
-        for (elem in $scope.dados) {
-            $scope.ca_objects.push($scope.dados[elem]);
-        }
-        //ok
+        return $scope.ca_objects;
       }, function(response) {
         // error.
       });
     //número de elementos no loop    
-    $scope.numpagpar = 40;
-    $scope.numpagimpar = 40;
-
-    var selstrpar = addLeadingZeros($scope.numpagpar, 4);
-    var selstrimpar = 0001;
-
-    //valores padrão
+    
+        //valores padrão
     $scope.revista = "codigo01";
     $scope.revista2 = "codigo01";
+
+    $scope.numpagpar = 38;
+    $scope.numpagimpar = 38;   
+    
+    $scope.pagimpar = 1;
+    $scope.pagpar = $scope.numpagpar;
+    
+        //var filteredArray = filterFilter($scope.ca_objects, {collections:'codigo01'});
+    
+
+    //var exemplar = $filter(collections:'codigo01')($scope.ca_objects);
+    //$scope.exemplar = 'asa';
+
+        //console.log($scope.ca_objects);
+
+
+    
+    
+        
+    $scope.$watch('revista', function() {
+        $scope.exemplar = $filter('filter')($scope.ca_objects, { collections:$scope.revista });
+       
+        if ($scope.exemplar) {
+        $scope.numpagpar =  $scope.exemplar.length;
+       }
+   });
+        
+    //console.log($scope.showEvent.length);
+      
+    
+    
+    
+    
+    
+
+    
+    console.log($scope.pagimpar);
+    
+    var selstrpar = addLeadingZeros($scope.numpagpar, 4);
+    var selstrimpar = addLeadingZeros($scope.pagimpar, 4);
+
+
     
     $scope.tipoimg = "tratadas";
     $scope.versao = "foto";
@@ -56,7 +80,11 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
 
 
     //se url tem alguma coisa
-    if (queryString) {
+
+    
+
+    
+        if (queryString) {
         var items = queryString.split("&");
         var params = {};
 
@@ -72,73 +100,94 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', func
         //console.log(params);
 
 
-        //se tem revista
-        if (params.revista) {
-            $scope.revista = params.revista;
-        }
-
-        //se tem revista 2
-        if (params.revista2) {
-            $scope.revista2 = params.revista2;
-        } else {
-            if (params.revista) {
-                $scope.revista2 = params.revista;
-            }
-            $scope.revista2 = $scope.revista2;
-        }
-
 
         if (params.indice) {
             $scope.indice = params.indice;
+            var parts = params.indice.split("_");
+            $scope.revista = parts[0];
+            var numpag = Number(parts[1]);
+            
         }
 
+        
+            
+            
         if (params.indice2) {
             $scope.indice2 = params.indice2;
+            var parts2 = params.indice2.split("_");
+            $scope.revista2 = parts2[0];
+            var numpag2 = Number(parts2[1]);
         } else {
             if (params.indice) {
-                var numpag = params.indice.split("_").pop(); // => "Tabs1
-                numpag = Number(numpag);
+                $scope.revista2 = $scope.revista;
                 if (numpag % 2 === 1) {
-                    //$scope.pagimpar = numpag;
+                    //se é impar
+                    numpag2 = numpag;
+                    
                     $scope.indice2 = params.indice;
                     if (numpag > 1) {
-                        var strpar = numpag - 1;
-                        var strpar = addLeadingZeros(strpar, 4);
+                        
+                        numpag = numpag2 - 1;
+                            
+                        var strpar = addLeadingZeros(numpag, 4);
                         $scope.indice = $scope.revista2 + "_" + strpar;
                     } else {
                         //se for a primeira
+                        numpag = $scope.numpagimpar;
                         var strpar = addLeadingZeros($scope.numpagimpar, 4);
                         $scope.indice = $scope.revista2 + "_" + strpar;
                     }
                 } else {
                     //se for par
                     $scope.indice = params.indice;
+                    
                     //se for a última
                     if (numpag == $scope.numpagpar) {
-                        $scope.indice2 = 1;
+                        numpag2 = 1;
                     } else {
-                        var strimpar =  numpag + 1;
-                        var strimpar = addLeadingZeros(strimpar, 4);
+                        numpag2 = numpag + 1;
+                        var strimpar = addLeadingZeros(numpag2, 4);
                         $scope.indice2 = $scope.revista2 + "_" + strimpar;
                     }
                 }
             }
         }
+            
+        $scope.pagpar = Number(numpag);    
+        $scope.pagimpar = Number(numpag2); 
     }
     
-//fim da checagem da url
-
-//converte indices para numeros    
-$scope.pagimpar = $scope.indice2.split("_").pop();
-$scope.pagpar = $scope.indice.split("_").pop();
-$scope.pagimpar = Number($scope.pagimpar);
-$scope.pagpar = Number($scope.pagpar);    
+    
+    //fim da checagem da url
+    
+    
+    
     
 
-console.log($scope.pagpar + "+" + $scope.pagimpar);
+//converte indices para numeros    
+//$scope.pagimpar = $scope.indice2.split("_").pop();
+//$scope.pagpar = $scope.indice.split("_").pop();
+
+ 
+//
+//
+
+
+    
+//console.log($scope.exemplar.length);
     
     //move para a próxima impar
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     $scope.moveimparnext = function () {
 
         if ($scope.pagimpar < $scope.numpagimpar) {
@@ -149,7 +198,7 @@ console.log($scope.pagpar + "+" + $scope.pagimpar);
         var strimpar = addLeadingZeros($scope.pagimpar, 4);
         $scope.indice2 = $scope.revista2 + "_" + strimpar;
         
-        var adress = '&revista=' + $scope.revista + '&indice=' + $scope.indice + '&revista2=' + $scope.revista2 + '&indice2=' + $scope.indice2;
+        var adress = '&indice=' + $scope.indice + '&indice2=' + $scope.indice2;
           $location.path(adress) ;
         
     }
@@ -163,7 +212,7 @@ console.log($scope.pagpar + "+" + $scope.pagimpar);
         }
         var strimpar = addLeadingZeros($scope.pagimpar, 4);
         $scope.indice2 = $scope.revista2 + "_" + strimpar;
-        var adress = '&revista=' + $scope.revista + '&indice=' + $scope.indice + '&revista2=' + $scope.revista2 + '&indice2=' + $scope.indice2;
+        var adress = '&indice=' + $scope.indice + '&indice2=' + $scope.indice2;
         $location.path(adress) ;
         
     }
@@ -179,7 +228,7 @@ console.log($scope.pagpar + "+" + $scope.pagimpar);
         var strpar = addLeadingZeros($scope.pagpar, 4);
         $scope.indice = $scope.revista + "_" + strpar;
         
-        var adress = '&revista=' + $scope.revista + '&indice=' + $scope.indice + '&revista2=' + $scope.revista2 + '&indice2=' + $scope.indice2;
+        var adress = '&indice=' + $scope.indice + '&indice2=' + $scope.indice2;
           $location.path(adress) ;
         
     }
@@ -195,7 +244,7 @@ console.log($scope.pagpar + "+" + $scope.pagimpar);
         }
         var strpar = addLeadingZeros($scope.pagpar, 4);
         $scope.indice = $scope.revista + "_" + strpar;
-        var adress = '&revista=' + $scope.revista + '&indice=' + $scope.indice + '&revista2=' + $scope.revista2 + '&indice2=' + $scope.indice2;
+        var adress =  '&indice=' + $scope.indice + '&indice2=' + $scope.indice2;
         $location.path(adress) ;
     }
     
@@ -269,7 +318,7 @@ console.log($scope.pagpar + "+" + $scope.pagimpar);
         $scope.indice2 = $scope.revista2 + "_" + strnext2;
         $scope.indice = $scope.revista2 + "_" + strnext1;
 
-        var adress = '&revista=' + $scope.revista + '&indice=' + $scope.indice + '&revista2=' + $scope.revista2 + '&indice2=' + $scope.indice2;
+        var adress = '&indice=' + $scope.indice + '&indice2=' + $scope.indice2;
         $location.path(adress);
 
         //console.log($scope.revista + " " + fx2num + " " + pagnum);
@@ -349,8 +398,8 @@ console.log($scope.pagpar + "+" + $scope.pagimpar);
         $scope.indice2 = $scope.revista + "_" + strprev2;
         $scope.indice = $scope.revista + "_" + strprev1;
 
-        var adress = '&revista=' + $scope.revista + '&indice=' + $scope.indice + '&revista2=' + $scope.revista2 + '&indice2=' + $scope.indice2 ;
-console.log($scope.revista + " " + fx2num + " " + pagnum);
+        var adress = '&indice=' + $scope.indice  + '&indice2=' + $scope.indice2 ;
+//console.log($scope.revista + " " + fx2num + " " + pagnum);
 
         $location.path(adress);
 
