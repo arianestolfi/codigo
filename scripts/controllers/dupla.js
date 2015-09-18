@@ -3,8 +3,8 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
   
     
     //$http.get('http://localhost/dados/service.php/simple/objects?q=*').
-    //$http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
-    $http.get('scripts/services/objects.json').
+    $http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
+    //$http.get('scripts/services/objects.json').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
