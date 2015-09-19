@@ -65,7 +65,7 @@ a:visited {
 
 .menu {
     width: 100%;
-    
+    position: relative;
 }
 
 
@@ -98,9 +98,9 @@ a:visited {
 
 #menuimpar {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    margin-right: 10px;
+    top: 0px;
+    right: 5px;
+    margin-right: 0px;
     z-index: 50;
 }
 
@@ -108,20 +108,25 @@ a:visited {
     height: 25px;
     width: 100px;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 0px;
     margin-top: 5px;
 }
 
 .buttons {
 margin-bottom: 5px;
-    
+ position: relative;   
+}
+
+.buttons img {
+width: 24px;
+    height: 24px;
 }
 
 .menu .buttons {
     margin-top: 5px;
     z-index: 50;
     position: relative;
-    top:2px;
+    top:0px;
     width: 120px;
     display: inline;
 }
@@ -131,9 +136,11 @@ margin-bottom: 5px;
     height: 25px;
     background-color: #fff;
     border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 5px;
+    border-radius: 12px;
+    margin-top: 5px;
     text-align: center;
+    position: relative;
+    top: 10px;
     
 }
 
@@ -142,7 +149,7 @@ margin-bottom: 5px;
     height: 25px;
     background-color: #fff;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 0px;
     margin-bottom: 5px;
     text-align: center;
     
@@ -559,3 +566,5 @@ top: 0;
 .oculto {
 
 }
+
+

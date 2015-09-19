@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="zoom.svg">
+
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-4.4642857,-2.5)">
+    <g
+       transform="translate(2.3293209,-19.63157)"
+       id="g3474"
+       style="stroke:none">
+      <circle
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="circle3476"
+         cx="15"
+         cy="35"
+         r="12" />
+      <path
+         sodipodi:type="star"
+         style="fill:#000000;stroke:none"
+         id="path3666"
+         sodipodi:sides="4"
+         sodipodi:cx="15"
+         sodipodi:cy="35"
+         sodipodi:r1="12"
+         sodipodi:r2="8.8397369"
+         sodipodi:arg1="0.78539816"
+         sodipodi:arg2="1.5707963"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 23.485281,43.485281 -16.9705623,0 -1e-7,-16.970562 16.9705624,0 z" />
+    </g>
+    <g
+       style="stroke:none"
+       id="g3709"
+       transform="translate(27.709404,-20.136646)">
+      <circle
+         r="12"
+         cy="35"
+         cx="15"
+         id="circle3711"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         d="m 23.485281,43.485281 -16.9705623,0 -1e-7,-16.970562 16.9705624,0 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.5707963"
+         sodipodi:arg1="0.78539816"
+         sodipodi:r2="8.8397369"
+         sodipodi:r1="12"
+         sodipodi:cy="35"
+         sodipodi:cx="15"
+         sodipodi:sides="4"
+         id="path3713"
+         style="fill:#000000;stroke:none"
+         sodipodi:type="star"
+         transform="matrix(1.3422619,0,0,0.375,-5.1339286,21.875)" />
+      <path
+         transform="matrix(0,1.3571429,-0.375,0,28.125,14.642857)"
+         sodipodi:type="star"
+         style="fill:#000000;stroke:none"
+         id="path3721"
+         sodipodi:sides="4"
+         sodipodi:cx="15"
+         sodipodi:cy="35"
+         sodipodi:r1="12"
+         sodipodi:r2="8.8397369"
+         sodipodi:arg1="0.78539816"
+         sodipodi:arg2="1.5707963"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 23.485281,43.485281 -16.9705623,0 -1e-7,-16.970562 16.9705624,0 z" />
+    </g>
+    <g
+       transform="translate(53.215756,-20.010377)"
+       id="g3725"
+       style="stroke:none">
+      <circle
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="circle3727"
+         cx="15"
+         cy="35"
+         r="12" />
+      <path
+         transform="matrix(1.3422619,0,0,0.375,-5.1339286,21.875)"
+         sodipodi:type="star"
+         style="fill:#000000;stroke:none"
+         id="path3729"
+         sodipodi:sides="4"
+         sodipodi:cx="15"
+         sodipodi:cy="35"
+         sodipodi:r1="12"
+         sodipodi:r2="8.8397369"
+         sodipodi:arg1="0.78539816"
+         sodipodi:arg2="1.5707963"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 23.485281,43.485281 -16.9705623,0 -1e-7,-16.970562 16.9705624,0 z" />
+    </g>
+    <g
+       transform="translate(52.836949,-20.515453)"
+       id="g3715"
+       style="stroke:none" />
+  </g>
+</svg>

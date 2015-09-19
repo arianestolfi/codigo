@@ -87,6 +87,7 @@ app.filter('rawHtml', ['$sce', function($sce){
 //- redimensionamento das faixas
 //- mudar zoom só do seu lado para cima e para baixo
 //- sumir o menu
+//- sumir a faixa quando a janela diminuir 
 
 
 //- botão de girar
