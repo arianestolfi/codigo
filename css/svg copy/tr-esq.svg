@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="quadrado.svg">
+   sodipodi:docname="tr-esq.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="0"
-     inkscape:zoom="6.798077"
-     inkscape:cx="-46.135368"
-     inkscape:cy="15.436198"
+     inkscape:zoom="38.455731"
+     inkscape:cx="8.1477737"
+     inkscape:cy="6.364433"
      inkscape:document-units="px"
-     inkscape:current-layer="g3474"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1640"
      inkscape:window-height="908"
-     inkscape:window-x="67"
-     inkscape:window-y="789"
+     inkscape:window-x="130"
+     inkscape:window-y="847"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -54,29 +54,31 @@
      id="layer1"
      transform="translate(-4.4642857,-2.5)">
     <g
-       transform="translate(2.0793208,-19.881569)"
+       transform="translate(2.3293209,-19.63157)"
        id="g3474"
-       style="fill:#000000;stroke:none">
+       style="stroke:none">
       <circle
-         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          id="circle3476"
-         cx="15.384965"
-         cy="35.381569"
-         r="13" />
-      <circle
-         r="12.5"
-         cy="35.381569"
-         cx="15.384965"
-         id="circle3559"
-         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      <rect
-         transform="scale(-1,-1)"
+         cx="15"
+         cy="35"
+         r="12" />
+      <path
+         sodipodi:type="star"
          style="fill:#000000;stroke:none"
-         id="rect3561"
-         width="13"
-         height="13"
-         x="-21.884964"
-         y="-41.881569" />
+         id="path3840"
+         sodipodi:sides="3"
+         sodipodi:cx="15"
+         sodipodi:cy="35"
+         sodipodi:r1="12"
+         sodipodi:r2="5.7634053"
+         sodipodi:arg1="1.0471976"
+         sodipodi:arg2="2.0943951"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="M 20.999999,45.392305 3,34.999999 21.000001,24.607695 Z"
+         inkscape:transform-center-x="116.63827" />
     </g>
   </g>
 </svg>
