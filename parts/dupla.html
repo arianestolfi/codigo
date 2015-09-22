@@ -121,7 +121,7 @@
                 <div class="info" ng-show="tipo == 'texto'" >
                             
                     
-                    <article class="description" ng-bind-html= "info.description | rawHtml">{{}}</article>
+                    <article class="description" ng-bind-html-unsafe= "info.description">{{}}</article>
                     <h3 class="autor">{{info.entities}}</h3>
                 </div>
             
@@ -236,9 +236,10 @@
              <div class="faixa" ng-repeat="info in ca_objects | filter: {'idno':indice2}" >
                 <div class="info" ng-show="tipo2 == 'texto'" >
                             
-                    
-                    <article class="description" ng-bind-html= "info.description | rawHtml">{{}}</article>
                     <h3 class="autor">{{info.entities}}</h3>
+                    <h3 class="titulo">{{info.display_label}}</h3>
+                    <article class="description" ng-bind-html= "info.description | rawHtml">{{}}</article>
+                    
                 </div>
             
             
