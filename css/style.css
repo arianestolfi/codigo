@@ -546,11 +546,12 @@ position: absolute;
 top: 0;
     right: 0;
     height: 100%;
-    padding: 50px 50px 0 50px;
+    padding: 50px 50px 25px 50px;
     width: 600px;
     overflow: auto;
     text-align: left;
     background-color: #fff;
+    
    
 }
 
