@@ -32,3 +32,4 @@ a fazer
 . fotos originais
 . html
 . posição e zoom na url
+. tipo na url
