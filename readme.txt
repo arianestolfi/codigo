@@ -16,9 +16,14 @@ recursos implementados:
 . zoom
 . página de busca
 . endereço dinâmico
-. integração odigo JSON
+. integração codigo JSON
 . conecção com collectiveaccess
+. pagina simples na posicao vertical 
+. lê html do banco de dados
 . variação da largura das páginas
+. ícones font-awesome
+. icone de arrastar
+. botão de girar
 
 
 a fazer

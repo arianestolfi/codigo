@@ -61,10 +61,10 @@
                     
                     
                     
-                    <button class="zoom-out"><img src="css/svg/menos.svg"></span></button>
+                    <button class="zoom-out fa fa-minus"></button>
 
-                    <button class="zoom-in"><img src="css/svg/mais.svg"></span></button>
-                    <button class="resetpar"><img src="css/svg/quadrado.svg"></span></button>
+                    <button class="zoom-in fa fa-plus"></button>
+                    <button class="resetpar fa fa-arrows-alt"></button>
                     
                 </div><br>
                 
@@ -87,11 +87,11 @@
                 <div class="buttons">
                     
                     
-                    <button class="prev-pag resetpar" ng-click="moveparprev()"><img src="css/svg/tr-up.svg"></span>
+                    <button class="prev-pag resetpar fa fa-arrow-up" ng-click="moveparprev()">
                     </button>
-                    <button class="next-pag resetpar resetimpar" ng-click="moveesq()"><img src="css/svg/tr-esq.svg"></span>
+                    <button class="next-pag resetpar resetimpar fa fa-arrow-left" ng-click="moveesq()">
                     </button>
-                    <button class="prev-pag resetpar" ng-click="moveparnext()"><img src="css/svg/tr-down.svg"></span>
+                    <button class="prev-pag resetpar fa fa-arrow-down" ng-click="moveparnext()">
                     </button>
                 </div>
             </div>
@@ -171,9 +171,11 @@
 
 
                 <div class="buttons">
-                    <button class="zoom-out"><img src="css/svg/menos.svg"></button>
-                    <button class="zoom-in"><img src="css/svg/mais.svg"></button>
-                    <button class="resetimpar"><img src="css/svg/quadrado.svg"></button>
+                    <button class="zoom-out fa fa-minus"></button>
+                    <button class="zoom-in fa fa-plus"></button>
+                    <button class="resetimpar fa fa-arrows-alt"></button>
+                    <button class="resetimpar fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img2'+ $index,rd);rd=rd+1;rd==4?rd=0:''"></button>
+                    
                 </div>
 
 
@@ -201,7 +203,7 @@
                     <!--<option>original</option>-->
                     
                     </select>
-
+<button class="resetimpar fa fa-question"></button>
 <!--                <input type="text" class="busca">-->
 
 
@@ -214,9 +216,9 @@
                 <div class="buttons">
                    
                     
-                    <button class="prev-pag resetimpar" ng-click="moveimparprev()"><img src="css/svg/tr-up.svg"></button>
-                    <button class="prev-pag resetimpar resetpar" ng-click="movedir()"><img src="css/svg/tr-dir.svg"></span></button>
-                    <button class="prev-pag resetimpar" ng-click="moveimparnext()"><img src="css/svg/tr-down.svg"></span></button>
+                    <button class="prev-pag resetimpar fa fa-arrow-up" ng-click="moveimparprev()"></button>
+                    <button class="prev-pag resetimpar resetpar fa fa-arrow-right" ng-click="movedir()" alt="move para dupla direita"></button>
+                    <button class="prev-pag resetimpar fa fa-arrow-down" ng-click="moveimparnext()"></button>
                 </div>
             </div>
 
@@ -225,8 +227,8 @@
                 
                 <div class="parent">
                 
-                <div class="panzoom" ng-hide="tipo2 == 'texto'">
-                    <img ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png" >
+                <div class="panzoom" id="zoom2" ng-hide="tipo2 == 'texto'">
+                    <img id="img2" ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png" >
                
                     
                     
@@ -278,7 +280,7 @@
 
 
     </div>
-    <div id="slider">&nbsp;
+<div id="slider" ><div class="control fa fa-arrows-h"></div>
 </div>
 </div>
 
@@ -302,7 +304,8 @@
     function updatedivsize(  ) {
       // first update the status visually...
         var largura = $(window).width();
-        var largurafaixa = largura - 10;
+        var larguraslider = 50;
+        var largurafaixa = largura - larguraslider;
         largurafaixa = largurafaixa /2;
         largurafaixa = largurafaixa + 'px';
         var posicao = $("#slider").position();

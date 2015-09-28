@@ -1,5 +1,6 @@
 var app = angular.module('app', [
-    'ngRoute'
+    'ngRoute',
+    'ngTouch'
 
 ]);
 
@@ -80,24 +81,22 @@ app.filter('rawHtml', ['$sce', function($sce){
 
 
 
+//mudar zoom só do seu lado para cima e para baixo
 
+//sumir o menu
 
-//
+//tipo na url
 
-//- redimensionamento das faixas
-//- mudar zoom só do seu lado para cima e para baixo
-//- sumir o menu
-//- sumir a faixa quando a janela diminuir 
+//pagina de busca
 
+//foto original
 
-//- botão de girar
-//endereço muda quando seleciona
+//html
 
-//- pagina de busca
+//testar ipad
 
+//tutorial (help)
 
-//- foto original
-//- html
 
 
 //ca_collections

@@ -3,8 +3,8 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
   
     
     //$http.get('http://localhost/dados/service.php/simple/objects?q=*').
-    $http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
-    //$http.get('scripts/services/objects.json').
+    //$http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
+    $http.get('scripts/services/objects.json').
       then(function(response) {
         // when the response is available
         $scope.dados = response.data;
@@ -159,33 +159,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
     //fim da checagem da url
     
     
-    
-    
-
-//converte indices para numeros    
-//$scope.pagimpar = $scope.indice2.split("_").pop();
-//$scope.pagpar = $scope.indice.split("_").pop();
-
- 
-//
-//
-
-
-    
-//console.log($scope.exemplar.length);
-    
-    //move para a próxima impar
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+//moveimpar    
     $scope.moveimparnext = function () {
 
         if ($scope.pagimpar < $scope.numpagimpar) {
@@ -406,17 +380,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
     
     
     
-    $scope.updateadress = function() {
-        
-        var strimpar = addLeadingZeros($scope.pagimpar, 4);
-        var strpar = addLeadingZeros($scope.pagpar, 4);
-
-        $scope.indice2 = $scope.revista + "_" + strimpar;
-        $scope.indice = $scope.revista + "_" + strpar;
-        
-        var adress = '&revista=' + $scope.revista + '&indice=' + $scope.indice + '&revista2=' + $scope.revista2 + '&indice2=' + $scope.indice2 ;
-       $location.path(adress);
-    }
+    
     
     
     
@@ -436,7 +400,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
             '-ms-transform': 'rotate(' + deg + 'deg)',
             '-o-transform': 'rotate(' + deg + 'deg)',
             'transform': 'rotate(' + deg + 'deg)'
-                //data-ng-click="RotateImage('img'+ $index,rd);rd=rd+1;rd==4?rd=0:''"
+                
 
         });
     }
