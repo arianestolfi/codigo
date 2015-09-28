@@ -2,7 +2,7 @@
 
     <div id="faixa1" class="par fx" ng-class="{simples: (proporcao < 1)}" style:="position:relative;">
         <section id="pagpar">
-            <div id="menupar" class="menu">
+            <div id="menupar" class="menu timer">
 
 <!--                <input type="text" class="busca">-->
 <!--
@@ -84,7 +84,7 @@
                 
             </div>
 
-            <div id="parcontroll" class="controll par" ng-hide="visible" ng-hide="visible">
+            <div id="parcontroll" class="controll par timer" ng-hide="visible" ng-hide="visible">
                 <div class="buttons">
                     
                     
@@ -167,7 +167,7 @@
 
     <div id="faixa2" class="impar fx" ng-show="proporcao>1">
         <section id="pagimpar">
-            <div id="menuimpar" class="menu">
+            <div id="menuimpar" class="menu timer">
 
 
 
@@ -214,7 +214,7 @@
 
 
 
-            <div id="imparcontroll" class="controll impar">
+            <div id="imparcontroll" class="controll impar timer">
                 <div class="buttons">
                    
                     
@@ -231,10 +231,7 @@
                 
                 <div class="panzoom" id="zoom2" ng-hide="tipo2 == 'texto'">
                     <img id="img2" ng-src="../revistas/{{revista2}}/tratadas/{{revista2}}_{{pagimpar | numberFixedLen:4}}.png" >
-               
-                    
-                    
-                    </div>
+                 </div>
                 
                 
             </div>
@@ -282,7 +279,7 @@
 
 
     </div>
-<div id="slider" ><div class="control fa fa-arrows-h"></div>
+<div id="slider" ><div class="control fa fa-arrows-h timer"></div>
 </div>
 </div>
 
@@ -292,6 +289,7 @@
 <script>
  $( "#slider" ).draggable({
       axis: "x", 
+     containment: "body",
       start: function() {
         
       },
@@ -325,5 +323,21 @@
         //$("#fullpage img").css('width', '100%');
         
     }
+    
+    var interval = 1;
+
+setInterval(function(){
+   if(interval == 2){
+       $('.timer').hide(); 
+       interval = 1; 
+   }
+   interval = interval+1;
+    console.log(interval);
+},1000);
+
+$(document).bind('mousemove keypress touchstart', function() {
+    $('.timer').show();
+    interval = 1; 
+});
     
 </script>

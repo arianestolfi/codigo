@@ -83,8 +83,6 @@ app.filter('rawHtml', ['$sce', function($sce){
 
 //mudar zoom só do seu lado para cima e para baixo
 
-//sumir o menu
-
 //tipo na url
 
 //pagina de busca
@@ -92,8 +90,6 @@ app.filter('rawHtml', ['$sce', function($sce){
 //foto original
 
 //html
-
-//testar ipad
 
 //tutorial (help)
 

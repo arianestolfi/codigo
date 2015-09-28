@@ -24,6 +24,7 @@ recursos implementados:
 . ícones font-awesome
 . icone de arrastar
 . botão de girar
+. menu desaparece
 
 
 a fazer

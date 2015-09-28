@@ -547,9 +547,11 @@ z-index: 600;
 }
 
 #slider .control {
+    position: absolute;
 margin-top: 5px;
     margin-left: 5px;
     line-height: 25px;
+    bottom: 0px;
 }
 
 .faixa {
