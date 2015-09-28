@@ -335,7 +335,7 @@ setInterval(function(){
     console.log(interval);
 },1000);
 
-$(document).bind('mousemove keypress touchstart', function() {
+$(document).bind('mousemove keypress touchstart touchmove', function() {
     $('.timer').show();
     interval = 1; 
 });
