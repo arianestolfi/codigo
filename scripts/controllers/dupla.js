@@ -3,7 +3,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
   
     
     //$http.get('http://localhost/dados/service.php/simple/objects?q=*').
-    $http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
+    $http.get('http://www.codigorevista.org/dados/service.php/simple/objects?q=*').
     //$http.get('scripts/services/objects.json').
       then(function(response) {
         // when the response is available
@@ -17,6 +17,21 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
         return $scope.ca_objects;
       }, function(response) {
         // error.
+        $http.get('scripts/services/objects.json').
+        then(function(response) {
+        // when the response is available
+        $scope.dados = response.data;
+        //console.log($scope.dados);
+        $scope.ca_objects = [];
+        for (elem in $scope.dados) {
+            $scope.ca_objects.push($scope.dados[elem]);
+        }
+        //ok
+        return $scope.ca_objects;
+      }, function(response) {
+        // error.
+        
+      });
       });
     //número de elementos no loop    
     
