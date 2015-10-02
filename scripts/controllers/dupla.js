@@ -36,6 +36,8 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
     //número de elementos no loop    
     
         //valores padrão
+    
+    
     $scope.revista = "codigo01";
     $scope.revista2 = "codigo01";
 
@@ -448,40 +450,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
         };
         $scope.$apply()
     });
-    //$http.get('http://localhost/~ASA/providence/service.php/service.php/simple/objects?q=*')
-
-/*
-    $http.get('scripts/services/objects.json').
-    then(function (response) {
-        // when the response is available
-
-        $scope.items = response.data;
-        $scope.ca_objects = [];
-        for (elem in $scope.items) {
-            $scope.ca_objects.push($scope.items[elem]);
-        }
-        //$scope.numpagpar = $scope.ca_objects.length;
-        //console.log($scope.ca_objects);
-
-//        if ($routeParams.itemId > 0) {
-//          $scope.prevItem = Number($routeParams.itemId)-1;
-//        } else {
-//          $scope.prevItem = $scope.artists.length-1;
-//        }
-//
-//        if ($routeParams.itemId < $scope.artists.length-1) {
-//          $scope.nextItem = Number($routeParams.itemId)+1;
-//        } else {
-//          $scope.nextItem = 0;
-//        }   
-
-
-        //ok
-    }, function (response) {
-        // error.
-    });
-*/
-
+    
 
 
 
