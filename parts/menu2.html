@@ -1,0 +1,140 @@
+<section id="pag2" class="pan2">
+    <div id="menupar" class="menu timer " ng-init="thumbs2=false">
+
+        <button class="control" ng-click="thumbs2=true" ng-hide="thumbs2">índice</button>
+
+        <input type="text" class="busca control" ng-show="thumbs2" ng-model="busca2">
+
+        <select ng-model="dir2" class="control" id="listarevista" ng-change="udateindice2()">
+            <option ng-repeat="revista in revistas">{{revista.idno}}</option>
+        </select>
+
+
+        <select ng-model="indice2" class="control" id="listapaginas">
+            <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir} " value="{{paginas.idno}}">{{$index+1}}</option>
+        </select>
+
+
+        <select class="control" ng-hide="thumbs2" ng-model="tipo2">
+            <option value="imagem">imagem</option>
+            <option value="texto">texto</option>
+        </select>
+
+        <select ng-model="busca2" class="control" ng-show="thumbs2">
+            <option>autores</option>
+            <option ng-repeat="autor in autores">{{autor.label}}</option>
+        </select>
+
+        <div class="zoombuttons buttons" ng-hide="thumbs2">
+            <button class="zoom-out fa fa-minus"></button>
+            <button class="zoom-in fa fa-plus"></button>
+            <button class="reset fa fa-arrows-alt"></button>
+            <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img2'+ $index,rd);rd=rd+1;rd==4?rd=0:''"></button>
+        </div>
+
+    </div>
+
+    <div id="parcontroll" class="controll par timer" >
+        <div class="buttons">
+
+            <button class="prev-pag reset2 fa fa-arrow-up" ng-click="moveprev2()">
+            </button>
+            <button class="next-pag reset2 resetpar fa fa-arrow-left" ng-click="move2()">
+            </button>
+            <button class="prev-pag reset2 fa fa-arrow-down" ng-click="movenext2()">
+            </button>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="parent" ng-hide="thumbs2">
+        <div id="faixa" class="panzoom" style="position:relative;">
+
+            <img id="img2" ng-hide="tipo2=='texto'" ng-src="../revistas/{{dir2}}/tratadas/{{indice2}}.png">
+
+        </div>
+
+        <div ng-show="tipo2=='texto'" class="caixa" ng-repeat="info in objetos | array | filter: {'idno':indice2}">
+
+            <div class="info" >
+
+                <h3 class="autor">{{info.entities}}</h3>
+                <h3 class="titulo">{{info.display_label}}</h3>
+                <article class="description" ng-bind-html="info.description | rawHtml"></article>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+<div id="miniaturas2" class="miniaturas" ng-show="thumbs2">
+        <ul id="indice2">
+
+            <li ng-repeat="item in objetos | array | filter : busca2 | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                <a href="" ng-href="index.html#&busca2={{busca2}}&busca={{busca}}&indice2={{item.idno}}&indice={{indice}}">
+                    <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
+            </li>
+        </ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <script>
+        (function() {
+
+            var $section = $(' .pan2');
+            var $panzoom = $section.find('.panzoom').panzoom({
+                $zoomIn: $section.find(".zoom-in"),
+                $zoomOut: $section.find(".zoom-out"),
+                $zoomRange: $section.find(".zoom-range"),
+                $reset: $(".reset"),
+                startTransform: 'scale(1)',
+                maxScale: 50,
+                increment: 0.5,
+            });
+
+            $panzoom.parent().on('mousewheel.focal', function(e) {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    focal: e
+                });
+            });
+        })();
+    </script>
+
+
+
+
+    
+
+
+
+
+    <div id="testes">
+        <!--<span ng-repeat="pagina in objetos | array | filter:{'collections':dir}">{{pagina.idno}}</br></span>-->
+        <h1>{{posicao}}</h1>
+        
+        <div id="counter" ng-model="posicao" >
+<!--
+    <li ng-repeat="pagina in (filtrados = (objetos | array | filter: busca))" ng-class="{selected: pagina.idno === indice2}">{{filtrados.indexOf(pagina)}}{{pagina.idno}}</li>
+-->
+    </div>
+    
+
+    </div>
+
+
+</section>
