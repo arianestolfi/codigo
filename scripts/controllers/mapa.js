@@ -5,15 +5,15 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
     var autores = [];
 
-    $scope.buscaobj = 'http://localhost/dados/service.php/simple/objects?q=*';
-    $scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
-    $scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
+    //$scope.buscaobj = 'http://localhost/dados/service.php/simple/objects?q=*';
+    //$scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
+    //$scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
 
-    //$scope.buscaobj = 'http://codigorevista.org/dados/service.php/simple/objects?q=*';
-    //$scope.buscarev = 'http://codigorevista.org/dados/service.php/simple/revistas?q=*';
-    //$scope.buscaaut = 'http://codigorevista.org/dados/service.php/simple/autores?q=*';
+    $scope.buscaobj = 'http://codigorevista.org/dados/service.php/simple/objects?q=*';
+    $scope.buscarev = 'http://codigorevista.org/dados/service.php/simple/revistas?q=*';
+    $scope.buscaaut = 'http://codigorevista.org/dados/service.php/simple/autores?q=*';
 
-    $scope.buscaobj = 'scripts/services/objects.json';
+    //$scope.buscaobj = 'scripts/services/objects.json';
     
     
     

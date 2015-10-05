@@ -146,7 +146,7 @@ width: 24px;
     height: 25px;
     background-color: #fff;
     border: 1px solid #000;
-    border-radius: 5px;
+    border-radius: 0px;
     margin-top: 5px;
     text-align: center;
     position: relative;
@@ -166,8 +166,8 @@ width: 24px;
     height: 25px;
     background-color: #fff;
     border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 5px;
+    border-radius: 0px;
+    margin-bottom: 0px;
     text-align: center;
     
 }
@@ -322,10 +322,7 @@ img {
     
 }
 
-.parent {
-width: 100%;
-    height: 100%;
-}
+
 
 /*range http://danielstern.ca/range.css/#/*/
 
@@ -336,6 +333,8 @@ input[type=range] {
     margin: 10px 0;
 
 }
+
+
 
 input[type=range]:focus {
     outline: none;
@@ -507,18 +506,6 @@ float: left;
     width: 100%;
 }
 
-#indice2 li {
-float: left;
-    width: 100px;
-}
-
-#indice2 li  a{
-float: left;
-    height:100px;
-    width: 100%;
-}
-
-
 .miniaturas {
 
 }
@@ -531,7 +518,7 @@ text-align: left;
 text-align: right;
 }
 
-#indice, #indice2 {
+#indice {
 width: 100%;
     height: 90%;
     overflow: auto;
@@ -592,9 +579,6 @@ right: 0;
 left: 0;
 }
 
-.caixa {
-width: 100%;
-}
 
 .info {
 position: absolute;
@@ -625,13 +609,3 @@ margin-left: -50px;
 }
 
 
-#testes {
-position: absolute;
-    top: 50px;
-    width: 500px;
-}
-
-
-.selected {
-border: 1px solid red;
-}
