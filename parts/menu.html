@@ -1,7 +1,14 @@
 <section id="pagpar" class="panpar">
-    <div id="menupar" class="menu timer " ng-init="thumbs=false">
+    <div id="menuimpar" class="menu timer " ng-init="thumbs=false">
 
-        <button class="control" ng-click="thumbs=true" ng-hide="thumbs">índice</button>
+        <div class="zoombuttons buttons" ng-hide="thumbs">
+            <button class="zoom-out fa fa-minus"></button>
+            <button class="zoom-in fa fa-plus"></button>
+            <button class="reset fa fa-arrows-alt"></button>
+            <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==4?rd=0:''"></button>
+        </div>
+        
+        
 
         <input type="text" class="busca control" ng-show="thumbs" ng-model="busca">
 
@@ -25,12 +32,7 @@
             <option ng-repeat="autor in autores">{{autor.label}}</option>
         </select>
 
-        <div class="zoombuttons buttons" ng-hide="thumbs">
-            <button class="zoom-out fa fa-minus"></button>
-            <button class="zoom-in fa fa-plus"></button>
-            <button class="reset fa fa-arrows-alt"></button>
-            <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==4?rd=0:''"></button>
-        </div>
+        <button class="control" ng-click="thumbs=true" ng-hide="thumbs">índice</button>
 
     </div>
 
@@ -116,8 +118,6 @@
     </script>
 
 
-    <h1>{{qualpag}}</h1>
-    <h1>{{indice}}</h1>
 
 
     

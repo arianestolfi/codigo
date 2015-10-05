@@ -13,6 +13,10 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     //$scope.buscarev = 'http://codigorevista.org/dados/service.php/simple/revistas?q=*';
     //$scope.buscaaut = 'http://codigorevista.org/dados/service.php/simple/autores?q=*';
 
+    $scope.buscaobj = 'scripts/services/objects.json';
+    
+    
+    
     $http({
         method: 'GET',
         url: $scope.buscaobj
@@ -21,6 +25,8 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         $scope.objetos = response.data;
         $scope.arrobj = $filter('array')($scope.objetos);
         $scope.arrobj = $filter('orderBy')($scope.arrobj, 'idno');
+       
+
         $scope.edicao = $scope.arrobj;
         $scope.edicao2 = $scope.arrobj;
         $scope.sel = $scope.arrobj;
@@ -28,6 +34,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         
         
         return $scope.arrobj;
+        console.log($scope.arrobj);
 
     }, function errorCallback(response) {
         // or server returns response with an error status.
@@ -311,72 +318,91 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     }
     
     
-    $scope.move = function() {
-        var positem = findinarray($scope.sel, 'idno', $scope.indice);
-        var tamanho = $scope.sel.length;
-        var positem2 = findinarray($scope.sel, 'idno', $scope.indice2);
-        
-        fxnum = positem;
-        fxnum2 = positem2;
-        
-        fxnum = Number(fxnum);
-        fxnum2 = Number(fxnum2); 
-        
-        fxdif = fxnum - fxnum2;
-        //confere se é impar
-        
-                if (fxnum % 2 === 1) {
+       $scope.move = function () {
+        var positem = findinarray($scope.edicao, 'idno', $scope.indice);
+        var positem2 = findinarray($scope.arrobj, 'idno', $scope.indice2);
 
-            //se forem duplas
-            if (fxdif == 1) {
-                next = fxnum + 2;
-                next2 = fxnum2 + 2;
-                //se for a ultima dupla
-                if (next == tamanho) {
-                    next = 0;
-                }
-            }
+           
+        var tamanho = $scope.arrobj.length;
+           
+           var controle = tamanho - 1
 
-            //se nao forem duplas
-            else {
-                next = fxnum;
-                next2 = fxnum - 1;
+        if (positem >= controle) {
+            var nextitem = 0;
+            var nextitem2 = tamanho -2;
+        } else {
+            var nextitem = positem + 2;
+            var nextitem2 = positem + 1;
+        }
+        $scope.indice = $scope.arrobj[nextitem].idno;
+        $scope.indice2 = $scope.arrobj[nextitem2].idno;
+    
+        var parts2 = $scope.indice2.split("_");
+        $scope.dir2 = parts2[0];
+        var parts = $scope.indice.split("_");
+        $scope.dir = parts[0];
+           
+        //console.log($scope.edicao.length);
+           console.log(tamanho);
+                   
+        console.log(positem);
+       console.log(nextitem);
+        console.log(nextitem2);
 
-                //se for a primeira pagina
-                if (fxnum == 1) {
-                    next2 = tamanho;
-                    //se for capa/contracapa
-                    if (fxnum2 == tamanho) {
-                        next = fxnum + 2;
-                        next2 = fxnum + 1;
-                    }
-                }
-            }
+        $scope.updateadress();
 
-            //se for par                
-        }else {
-            next = fxnum + 1;
-            next2 = fxnum;
+    }
+ 
+       
+    $scope.move2 = function () {
+        var positem2 = findinarray($scope.arrobj, 'idno', $scope.indice2);
+        var positem = findinarray($scope.arrobj, 'idno', $scope.indice);
+        var tamanho = $scope.arrobj.length;
+
+        var previtem = positem2 -1;
+        var previtem2 = positem2 -2;
+        
+        if (positem2 <= 1) {
+        
+            var previtem = 0
+            var previtem2 = tamanho -1;
+        } 
+        
+        if (positem = 0) {
+        var previtem = tamanho -2;
+            var previtem2 = tamanho - 3;
             
         }
-        $scope.indice = $scope.sel[next].idno;
-
-        $scope.indice2 = $scope.sel[next2].idno;
         
+        if ($scope.arrobj[previtem2].idno) {
+                $scope.indice2 = $scope.arrobj[previtem2].idno;
+        } else {
+        var previtem2 = previtem2 -1;
+        $scope.indice2 = $scope.arrobj[previtem2].idno;    
+        }
+         
+        $scope.indice = $scope.arrobj[previtem].idno;
+        
+        var parts2 = $scope.indice2.split("_");
+        $scope.dir2 = parts2[0];
+        var parts = $scope.indice.split("_");
+        $scope.dir = parts[0];
+        
+        
+        console.log(tamanho);
+                   
+        console.log(positem2);
+       console.log(previtem);
+        console.log(previtem2);
+
         $scope.updateadress();
-        console.log(fxdif); 
-         console.log(fxnum2);          
 
-        console.log(fxnum);          
 
-        //console.log(next);          
-        //console.log(next2);
-        console.log($scope.sel.length);
-        
-    
     }
+    
 
-
+       
+    
     //    $scope.$watchGroup(['foo', 'bar'], function(newValues, oldValues, scope) {
     //  // newValues array contains the current values of the watch expressions
     //  // with the indexes matching those of the watchExpression array
