@@ -14,7 +14,8 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     $scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
 
     //$scope.buscaobj = 'scripts/services/objects.json';
-    
+     //$scope.buscarev = 'scripts/services/revistas.json';
+    //$scope.buscaaut = 'scripts/services/autores.json';   
     
     
     $http({

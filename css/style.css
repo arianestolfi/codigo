@@ -495,12 +495,15 @@ width: 100%;
 
 /*busca*/
 
-#indice li {
+#indice li,
+#indice2 li{
 float: left;
     width: 100px;
 }
 
-#indice li  a{
+#indice li  a,
+#indice2 li  a
+{
 float: left;
     height:100px;
     width: 100%;
