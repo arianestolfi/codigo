@@ -9,9 +9,9 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     //$scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
     //$scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
 
-    $scope.buscaobj = 'http://codigorevista.org/dados/service.php/simple/objects?q=*';
-    $scope.buscarev = 'http://codigorevista.org/dados/service.php/simple/revistas?q=*';
-    $scope.buscaaut = 'http://codigorevista.org/dados/service.php/simple/autores?q=*';
+    $scope.buscaobj = 'http://www.codigorevista.org/dados/service.php/simple/objects?q=*';
+    $scope.buscarev = 'http://www.codigorevista.org/dados/service.php/simple/revistas?q=*';
+    $scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
 
     //$scope.buscaobj = 'scripts/services/objects.json';
     
@@ -37,7 +37,13 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         console.log($scope.arrobj);
 
     }, function errorCallback(response) {
+        
+        
         // or server returns response with an error status.
+        
+        
+        
+        
     });
 
 
