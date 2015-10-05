@@ -9,12 +9,13 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     //$scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
     //$scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
 
-    $scope.buscaobj = 'http://www.codigorevista.org/dados/service.php/simple/objects?q=*';
-    $scope.buscarev = 'http://www.codigorevista.org/dados/service.php/simple/revistas?q=*';
-    $scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
+    //$scope.buscaobj = 'http://www.codigorevista.org/dados/service.php/simple/objects?q=*';
+    //$scope.buscarev = 'http://www.codigorevista.org/dados/service.php/simple/revistas?q=*';
+    //$scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
 
-    //$scope.buscaobj = 'scripts/services/objects.json';
-    
+    $scope.buscaobj = 'scripts/services/objects.json';
+     $scope.buscarev = 'scripts/services/revistas.json';
+    $scope.buscaaut = 'scripts/services/autores.json';   
     
     
     $http({
