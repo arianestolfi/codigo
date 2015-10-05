@@ -516,15 +516,18 @@ float: left;
 
 }
 
-#indice .minimpar a {
+#indice .minimpar a,
+#indice2 .minimpar a{
 text-align: left;
 }
 
-#indice .minpar a {
+#indice .minpar a,
+#indice2 .minpar a{
 text-align: right;
 }
 
-#indice {
+#indice,
+#indice2 {
 width: 100%;
     height: 90%;
     overflow: auto;
