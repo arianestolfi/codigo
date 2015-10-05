@@ -1,6 +1,8 @@
 <div id="fullpage" ng-init="visible=true" ng-init="thumbs=true" ng-init= "pagimpar = 1">
 
     <div id="faixa1" class="par fx" ng-class="{simples: (proporcao < 1)}" style:="position:relative;">
+        
+        
         <section id="pagpar">
             <div id="menupar" class="menu timer">
 
@@ -100,7 +102,10 @@
 
              <div id="miniaturaspar" ng-init="visible = false" ng-show="visible" class="miniaturas">
                  <ul id="indice">
-                        <li ng-click="$parent.visible=false" ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                      <!--<li ng-click="$parent.visible=false" ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">-->
+                     
+                     
+                        <li ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                             <a href="" ng-href="index.html#&indice={{item.idno}}" >
                                 <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" /></a>
                             </li>
