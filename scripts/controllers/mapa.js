@@ -5,19 +5,40 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
     var autores = [];
 
-    //$scope.buscaobj = 'http://localhost/dados/service.php/simple/objects?q=*';
-    //$scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
-    //$scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
+ 
 
-    $scope.buscaobj = 'http://www.codigorevista.org/dados/service.php/simple/objects?q=*';
-    $scope.buscarev = 'http://www.codigorevista.org/dados/service.php/simple/revistas?q=*';
-    $scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
+    //variaveis padrão
+
+    //revista par
+    //revista impar  
+    $scope.dir = "codigo01";
+    $scope.dir2 = "codigo01";
+
+    //pagina par
+    //pagina impar
+    $scope.indice = "codigo01_0001";
+    $scope.indice2 = "codigo01_0038";
+
+    //tipo par
+    //tipo impar
+    $scope.tipo = "imagem";
+    $scope.tipo2 = "imagem";
+
+    $scope.busca = "";
+    $scope.busca2 = "";
 
     //$scope.buscaobj = 'scripts/services/objects.json';
-     //$scope.buscarev = 'scripts/services/revistas.json';
-    //$scope.buscaaut = 'scripts/services/autores.json';   
-    
-    
+    //$scope.buscarev = 'scripts/services/revistas.json';
+    //$scope.buscaaut = 'scripts/services/autores.json';
+
+       $scope.buscaobj = 'http://localhost/dados/service.php/simple/objects?q=*';
+    $scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
+    $scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
+
+    //$scope.buscaobj = 'http://www.codigorevista.org/dados/service.php/simple/objects?q=*';
+    //$scope.buscarev = 'http://www.codigorevista.org/dados/service.php/simple/revistas?q=*';
+    //$scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
+
     $http({
         method: 'GET',
         url: $scope.buscaobj
@@ -26,25 +47,25 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         $scope.objetos = response.data;
         $scope.arrobj = $filter('array')($scope.objetos);
         $scope.arrobj = $filter('orderBy')($scope.arrobj, 'idno');
-       
+
 
         $scope.edicao = $scope.arrobj;
         $scope.edicao2 = $scope.arrobj;
         $scope.sel = $scope.arrobj;
-        $scope.sel2 = $scope.arrobj; 
-        
-        
+        $scope.sel2 = $scope.arrobj;
+
+
         return $scope.arrobj;
         console.log($scope.arrobj);
 
     }, function errorCallback(response) {
-        
-        
+
+
         // or server returns response with an error status.
-        
-        
-        
-        
+
+
+
+
     });
 
 
@@ -96,9 +117,9 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     $scope.busca = "";
     $scope.busca2 = "";
 
-    
-    
-    
+
+
+
     //estilo pagina par (zoom)
     //estilo pagina impar (zoom)
     //$scope.estilo = $('#faixa').css();
@@ -158,23 +179,23 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         $scope.indice = $scope.dir + "_0001";
         $scope.updateadress();
         $scope.edicao = $filter('filter')($scope.arrobj, {
-                collections: $scope.dir
-            });
+            collections: $scope.dir
+        });
     }
     $scope.udateindice2 = function () {
         $scope.indice2 = $scope.dir2 + "_0001";
         $scope.updateadress();
         $scope.edicao2 = $filter('filter')($scope.arrobj, {
-                collections: $scope.dir2
-            });
+            collections: $scope.dir2
+        });
 
     }
 
     //array de objetos filtrados
     $scope.$watch('arrobj', function (newValue) {
-        
+
         if (typeof newValue != 'undefined') {
-            
+
             //objetos filtrados
             $scope.filtered = $scope.arrobj;
 
@@ -186,7 +207,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
                 } else {
                     $scope.filtered = $scope.arrobj;
                 }
-                
+
                 //muda os selecionados
                 $scope.sel = $scope.filtered;
                 //$scope.pag = $filter('filter')($scope.sel, $scope.indice);
@@ -267,8 +288,8 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
 
     }
-    
-        $scope.moveprev2 = function () {
+
+    $scope.moveprev2 = function () {
         var positem = findinarray($scope.edicao2, 'idno', $scope.indice2);
         var tamanho = $scope.edicao2.length;
         if (positem <= 0) {
@@ -323,93 +344,115 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         $scope.updateadress();
 
     }
-    
-    
-       $scope.move = function () {
+
+
+    $scope.move = function () {
         var positem = findinarray($scope.edicao, 'idno', $scope.indice);
         var positem2 = findinarray($scope.arrobj, 'idno', $scope.indice2);
 
-           
+
         var tamanho = $scope.arrobj.length;
-           
-           var controle = tamanho - 1
+
+        var controle = tamanho - 1
 
         if (positem >= controle) {
             var nextitem = 0;
-            var nextitem2 = tamanho -2;
+            var nextitem2 = tamanho - 2;
         } else {
-            var nextitem = positem + 2;
-            var nextitem2 = positem + 1;
+
+            if (positem % 2 === 1) {
+                var nextitem = positem + 2;
+                var nextitem2 = positem + 1;
+            } else {
+                var nextitem = positem + 1;
+                var nextitem2 = positem;
+            }
+
+
         }
         $scope.indice = $scope.arrobj[nextitem].idno;
         $scope.indice2 = $scope.arrobj[nextitem2].idno;
-    
+
         var parts2 = $scope.indice2.split("_");
         $scope.dir2 = parts2[0];
         var parts = $scope.indice.split("_");
         $scope.dir = parts[0];
-           
+
         //console.log($scope.edicao.length);
-           console.log(tamanho);
-                   
+        console.log(tamanho);
+
         console.log(positem);
-       console.log(nextitem);
+        console.log(nextitem);
         console.log(nextitem2);
 
         $scope.updateadress();
 
     }
- 
-       
+
+
     $scope.move2 = function () {
         var positem2 = findinarray($scope.arrobj, 'idno', $scope.indice2);
         var positem = findinarray($scope.arrobj, 'idno', $scope.indice);
         var tamanho = $scope.arrobj.length;
 
-        var previtem = positem2 -1;
-        var previtem2 = positem2 -2;
         
-        if (positem2 <= 1) {
+        if (positem2 % 2 === 1) {
+           var previtem2 = positem2 - 1;
+            var previtem = positem2 ;
         
-            var previtem = 0
-            var previtem2 = tamanho -1;
-        } 
-        
-        if (positem = 0) {
-        var previtem = tamanho -2;
-            var previtem2 = tamanho - 3;
+        }else {
             
+         var previtem = positem2 - 1;
+            var previtem2 = positem2 - 2;
         }
         
+
+
+
+        if (positem2 <= 1) {
+
+            var previtem = 0
+            var previtem2 = tamanho - 1;
+        }
+
+        if (positem = 0) {
+            var previtem = tamanho - 2;
+            var previtem2 = tamanho - 3;
+
+        }
+        
+        
+        
+
         if ($scope.arrobj[previtem2].idno) {
-                $scope.indice2 = $scope.arrobj[previtem2].idno;
+            $scope.indice2 = $scope.arrobj[previtem2].idno;
         } else {
-        var previtem2 = previtem2 -1;
-        $scope.indice2 = $scope.arrobj[previtem2].idno;    
+            var previtem2 = previtem2 - 1;
+            $scope.indice2 = $scope.arrobj[previtem2].idno;
         }
-         
+
         $scope.indice = $scope.arrobj[previtem].idno;
-        
+
         var parts2 = $scope.indice2.split("_");
         $scope.dir2 = parts2[0];
         var parts = $scope.indice.split("_");
         $scope.dir = parts[0];
-        
-        
+
+
         console.log(tamanho);
-                   
+
         console.log(positem2);
-       console.log(previtem);
+        console.log(previtem);
         console.log(previtem2);
 
         $scope.updateadress();
 
 
     }
-    
 
-       
-    
+
+
+
     //    $scope.$watchGroup(['foo', 'bar'], function(newValues, oldValues, scope) {
     //  // newValues array contains the current values of the watch expressions
     //  // with the indexes matching those of the watchExpression array
@@ -431,7 +474,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
 
 
-//console.log($scope.edicao2);
+    //console.log($scope.edicao2);
     //end of controller
 }]);
 

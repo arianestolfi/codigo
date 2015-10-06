@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -177,6 +179,11 @@ width: 24px;
     color: #fff;
     border-color: red;
 
+}
+
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
 }
 
 button span.glyphicon {
@@ -437,12 +444,12 @@ width:25px;
     background-color: #fff;
     border: 1px solid black; 
     border-bottom: 0;
-    -webkit-border-top-left-radius: 5px;
--webkit-border-top-right-radius: 5px;
--moz-border-radius-topleft: 5px;
--moz-border-radius-topright: 5px;
-border-top-left-radius: 5px;
-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 0px;
+-webkit-border-top-right-radius: 0px;
+-moz-border-radius-topleft: 0px;
+-moz-border-radius-topright: 0px;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
     color: #000;
     position: absolute;
     bottom: 0;
@@ -509,19 +516,21 @@ float: left;
     width: 100%;
 }
 
+/* miniaturas*/
 .miniaturas {
 
 }
 
-#indice .minimpar a {
+ .minimpar a{
 text-align: left;
 }
 
-#indice .minpar a {
+ .minpar a{
 text-align: right;
 }
 
-#indice {
+#indice,
+#indice2 {
 width: 100%;
     height: 90%;
     overflow: auto;
@@ -548,6 +557,8 @@ z-index: 600;
 
 #slider:hover {
 }
+
+
 
 #slider .control {
     position: absolute;
@@ -611,4 +622,15 @@ margin-left: -50px;
 
 }
 
+.parent {
+width: 100%;
+    height: 100%;
+}
 
+.caixa {
+position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    
+}

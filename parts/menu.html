@@ -13,7 +13,7 @@
         <input type="text" class="busca control" ng-show="thumbs" ng-model="busca">
 
         <select ng-model="dir" class="control" id="listarevista" ng-change="udateindice()">
-            <option ng-repeat="revista in revistas">{{revista.idno}}</option>
+            <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
         </select>
 
 
@@ -77,10 +77,15 @@
 <div id="miniaturaspar" class="miniaturas" ng-show="thumbs">
         <ul id="indice">
 
-            <li ng-repeat="item in objetos | array | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+            <li ng-repeat="item in objetos | array | filter: 'codigo' | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                 <a href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
                     <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
             </li>
+            <li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                <a href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
+                    <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
+            </li>
+            
         </ul>
 
     </div>
