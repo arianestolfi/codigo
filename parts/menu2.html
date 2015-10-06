@@ -5,17 +5,19 @@
 
         <input type="text" class="busca control" ng-show="thumbs2" ng-model="busca2">
 
-        <select ng-model="dir2" class="control" id="listarevista" ng-change="udateindice2()">
+        <select ng-hide="thumbs2" ng-model="dir2" class="control" id="listarevista" ng-change="udateindice2()">
             <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
         </select>
-
+<select ng-show="thumbs2" ng-model="busca2" class="control" id="listarevista" ng-change="">
+            <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
+        </select>
 
         <select ng-model="indice2" class="control" id="listapaginas">
             <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir2} " value="{{paginas.idno}}">{{$index+1}}</option>
         </select>
 
 
-        <select class="control" ng-hide="thumbs2" ng-model="tipo2">
+        <select class="control" ng-hide="thumbs2" ng-model="tipo2" class="fa fa-caret-down">
             <option value="imagem">imagem</option>
             <option value="texto">texto</option>
         </select>

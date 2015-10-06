@@ -181,6 +181,11 @@ width: 24px;
 
 }
 
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
 button span.glyphicon {
     position: relative;
     top: 0px;
@@ -552,6 +557,8 @@ z-index: 600;
 
 #slider:hover {
 }
+
+
 
 #slider .control {
     position: absolute;
