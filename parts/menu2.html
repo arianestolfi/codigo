@@ -6,12 +6,12 @@
         <input type="text" class="busca control" ng-show="thumbs2" ng-model="busca2">
 
         <select ng-model="dir2" class="control" id="listarevista" ng-change="udateindice2()">
-            <option ng-repeat="revista in revistas">{{revista.idno}}</option>
+            <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
         </select>
 
 
         <select ng-model="indice2" class="control" id="listapaginas">
-            <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir} " value="{{paginas.idno}}">{{$index+1}}</option>
+            <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir2} " value="{{paginas.idno}}">{{$index+1}}</option>
         </select>
 
 
@@ -75,8 +75,12 @@
 <div id="miniaturas2" class="miniaturas" ng-show="thumbs2">
         <ul id="indice2">
 
-            <li ng-repeat="item in objetos | array | filter : busca2 | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+            <li ng-repeat="item in objetos | array | filter: 'codigo' | filter : busca2 | orderBy:'idno'"  ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                 <a href="" ng-href="index.html#&busca2={{busca2}}&busca={{busca}}&indice2={{item.idno}}&indice={{indice}}">
+                    <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
+            </li>
+            <li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca2 | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                <a href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
                     <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
             </li>
         </ul>
@@ -84,7 +88,7 @@
     </div>
     
     
-    
+    {{tipo2}}
     
     
     
