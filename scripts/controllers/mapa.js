@@ -27,17 +27,17 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     $scope.busca = "";
     $scope.busca2 = "";
 
-    $scope.buscaobj = 'scripts/services/objects.json';
-    $scope.buscarev = 'scripts/services/revistas.json';
-    $scope.buscaaut = 'scripts/services/autores.json';
+    //$scope.buscaobj = 'scripts/services/objects.json';
+    //$scope.buscarev = 'scripts/services/revistas.json';
+    //$scope.buscaaut = 'scripts/services/autores.json';
 
        //$scope.buscaobj = 'http://localhost/dados/service.php/simple/objects?q=*';
     //$scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
     //$scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
 
-    //$scope.buscaobj = 'http://www.codigorevista.org/dados/service.php/simple/objects?q=*';
-    //$scope.buscarev = 'http://www.codigorevista.org/dados/service.php/simple/revistas?q=*';
-    //$scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
+    $scope.buscaobj = 'http://www.codigorevista.org/dados/service.php/simple/objects?q=*';
+    $scope.buscarev = 'http://www.codigorevista.org/dados/service.php/simple/revistas?q=*';
+    $scope.buscaaut = 'http://www.codigorevista.org/dados/service.php/simple/autores?q=*';
 
     $http({
         method: 'GET',
