@@ -21,9 +21,9 @@
 
 
     
-<section ng-controller="pagController" ng-init=>
+<section ng-controller="marController" ng-init=>
 
-<div ng-view></div>
+<div ng-include="parts/indice.html"></div>
 
 
 
@@ -31,11 +31,7 @@
    <div class="vertical apoio" >apoio</div> 
     </div>    
     -->
-<div id="apoio" class="timer" >
-   <div class="vertical apoio " >apoio</div> 
     
-    
-    </div>    
     
      
     
@@ -50,37 +46,12 @@
 <script src="lib/angular/angular.min.js"></script>
 <script src="lib/angular/angular-route.js"></script>
 <script src="lib/angular-mousewheel/mousewheel.js"></script>
-<script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular-ui-router.js"></script>
 <script src="lib/angular/angular-touch.min.js"></script>
 <script src="scripts/controllers/app.js"></script>
-<script src="scripts/controllers/dupla.js"></script>
-<script src="scripts/controllers/mapa.js"></script>
-<script src="scripts/controllers/busca.js"></script>
-<script src="scripts/controllers/TestController.js"></script>
-</script>
+<script src="scripts/controllers/indice.js"></script>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-68400830-1', 'auto');
-  ga('send', 'pageview');
-
-    
-    
-</script>
 
 </html>
 
-<!-- http://www.codigorevista.org/dados/service.php/item/ca_objects/id/1?pretty=1
-
-
-http://www.codigorevista.org/dados/service.php/find/ca_objects?q=*&pretty=1
-
-http://www.codigorevista.org/dados/service.php/find/ca_collections?q=*&pretty=1
-
-http://www.codigorevista.org/dados/service.php/find/ca_entities?q=*&pretty=1
-
--->

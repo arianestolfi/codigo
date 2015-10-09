@@ -1,9 +1,8 @@
-app.controller('pagController', ['$scope', '$window', '$http', '$location', '$filter', function ($scope, $window, $http, $location, $filter ) {
+app.controller('marController', ['$scope', '$window', '$http', '$location', '$filter', function ($scope, $window, $http, $location, $filter ) {
 
   
     
-    //$http.get('http://localhost/dados/service.php/simple/objects?q=*').
-    $http.get('http://codigorevista.org/dados/service.php/simple/objects?q=*').
+    $http.get('scripts/services/objects.json').
     //$http.get('scripts/services/objects.json').
       then(function(response) {
         // when the response is available
@@ -22,12 +21,9 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
         // when the response is available
         $scope.dados = response.data;
         //console.log($scope.dados);
-        $scope.ca_objects = [];
-        for (elem in $scope.dados) {
-            $scope.ca_objects.push($scope.dados[elem]);
-        }
+        
         //ok
-        return $scope.ca_objects;
+        return $scope.dados;
       }, function(response) {
         // error.
         
@@ -35,58 +31,14 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
       });
     //número de elementos no loop    
     
-        //valores padrão
     
-    
-    $scope.revista = "codigo01";
-    $scope.revista2 = "codigo01";
-
-    $scope.numpagpar = 38;
-    $scope.numpagimpar = 38;   
-    
-    $scope.pagimpar = 1;
-    $scope.pagpar = $scope.numpagpar;
-    
-    $scope.tipo = "imagem";
-    $scope.tipo2 = "imagem";
-    
-        //var filteredArray = filterFilter($scope.ca_objects, {collections:'codigo01'});
-    
-
-    //var exemplar = $filter(collections:'codigo01')($scope.ca_objects);
-    //$scope.exemplar = 'asa';
-
-        //console.log($scope.ca_objects);
-
-
-    
-    
-        
-    $scope.$watch('revista', function() {
-        $scope.exemplar = $filter('filter')($scope.ca_objects, { collections:$scope.revista });
-       
-        if ($scope.exemplar) {
-        $scope.numpagpar =  $scope.exemplar.length;
-       }
-   });
         
     //console.log($scope.showEvent.length);
       
     
-    
-    console.log($scope.pagimpar);
-    
-    var selstrpar = addLeadingZeros($scope.numpagpar, 4);
-    var selstrimpar = addLeadingZeros($scope.pagimpar, 4);
-
-
-    
-    $scope.tipoimg = "tratadas";
-    $scope.versao = "foto";
     $scope.extensao = ".png";
 
-    $scope.indice = $scope.revista + "_" + selstrpar;
-    $scope.indice2 = $scope.revista2 + "_" + selstrimpar;
+    //$scope.indice = $scope.revista + "_" + selstrpar;
 
     // pega elementos da url
 
@@ -115,7 +67,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
         //console.log(params);
 
 
-
+            numpag = 1;
         if (params.indice) {
             $scope.indice = params.indice;
             var parts = params.indice.split("_");
@@ -124,52 +76,10 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
             
         }
 
-        
+   
+       
             
-            
-        if (params.indice2) {
-            $scope.indice2 = params.indice2;
-            var parts2 = params.indice2.split("_");
-            $scope.revista2 = parts2[0];
-            var numpag2 = Number(parts2[1]);
-        } else {
-            if (params.indice) {
-                $scope.revista2 = $scope.revista;
-                if (numpag % 2 === 1) {
-                    //se é impar
-                    numpag2 = numpag;
-                    
-                    $scope.indice2 = params.indice;
-                    if (numpag > 1) {
-                        
-                        numpag = numpag2 - 1;
-                            
-                        var strpar = addLeadingZeros(numpag, 4);
-                        $scope.indice = $scope.revista2 + "_" + strpar;
-                    } else {
-                        //se for a primeira
-                        numpag = $scope.numpagimpar;
-                        var strpar = addLeadingZeros($scope.numpagimpar, 4);
-                        $scope.indice = $scope.revista2 + "_" + strpar;
-                    }
-                } else {
-                    //se for par
-                    $scope.indice = params.indice;
-                    
-                    //se for a última
-                    if (numpag == $scope.numpagpar) {
-                        numpag2 = 1;
-                    } else {
-                        numpag2 = numpag + 1;
-                        var strimpar = addLeadingZeros(numpag2, 4);
-                        $scope.indice2 = $scope.revista2 + "_" + strimpar;
-                    }
-                }
-            }
-        }
-            
-        $scope.pagpar = Number(numpag);    
-        $scope.pagimpar = Number(numpag2); 
+        $scope.qualitem = Number(numpag);    
     }
     
     
@@ -316,84 +226,11 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
 
     //move para a esquerda
 
-    $scope.moveesq = function () {
-
-        fx1num = $scope.pagpar;
-        fx2num = $scope.pagimpar;
-        fx1num = Number(fx1num);
-        fx2num = Number(fx2num);
-        fxdif = fx2num - fx1num;
-        //fxdif = parseFloat(fxdif);
-        $scope.revista2 = $scope.revista;
-        pagnum = $scope.numpagpar;
-
-        //console.log(fx1num + " " + fx2num + " " + pagnum);
-
-
-        //se for par
-        if (fx1num % 2 === 0) {
-            //se forem duplas
-            if (fxdif == 1) {
-                next1 = fx1num - 2;
-                next2 = fx2num - 2;
-                //se for a primeira dupla
-                if (fx1num == 2) {
-                    next1 = pagnum;
-                    next2 = 1;
-                }
-            }
-
-
-            //se nao forem duplas
-            else {
-                next1 = fx1num;
-                next2 = fx1num + 1;
-
-                //se for a ultima pagina
-                if (fx1num == pagnum) {
-                    next2 = pagnum - 1;
-
-                    //se for capa/contracapa
-                    if (fx2num == 1) {
-                        next1 = fx1num - 2;
-                        next2 = fx1num - 1;
-                    } else {
-                        next1 = 1;
-                    }
-                }
-            }
-
-            //se for impar                
-
-        } else {
-            next2 = fx1num;
-            if (fx1num == 1) {
-                next1 = pagnum;
-            } else {
-                next1 = fx1num - 1;
-
-            }
-
-        }
+    
 
         //move para a esquerda
 
-        $scope.pagimpar = next2;
-        $scope.pagpar = next1;
-
-        var strprev2 = addLeadingZeros(next2, 4);
-        var strprev1 = addLeadingZeros(next1, 4);
-
-        $scope.indice2 = $scope.revista + "_" + strprev2;
-        $scope.indice = $scope.revista + "_" + strprev1;
-
-        var adress = '&indice=' + $scope.indice  + '&indice2=' + $scope.indice2 ;
-//console.log($scope.revista + " " + fx2num + " " + pagnum);
-
-        $location.path(adress);
-
-
-    }
+        
     
     
     
@@ -403,11 +240,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
     
 
     //apoio
-    $scope.apoiocl = 'estreito';
-    $scope.items = [];
-
-
-    $scope.movefrente = function ($scope) {}
+    
 
     $scope.RotateImage = function (id, deg) {
         var deg = 45 * deg;
@@ -429,27 +262,7 @@ app.controller('pagController', ['$scope', '$window', '$http', '$location', '$fi
 
     
 
-    //checa proporção da página
-    $scope.altura = $window.innerHeight;
-    $scope.largura = $window.innerWidth;
-    $scope.proporcao = $scope.largura / $scope.altura;
-    if ($scope.proporcao > 1.5) {
-        $scope.dupla = true;
-    } else {
-        $scope.dupla = false;
-    };
-    // resize diminuir 
-    $(window).resize(function () {
-        $scope.altura = $window.innerHeight;
-        $scope.largura = $window.innerWidth;
-        $scope.proporcao = $scope.largura / $scope.altura;
-        if ($scope.proporcao > 1.5) {
-            $scope.dupla = true;
-        } else {
-            $scope.dupla = false;
-        };
-        $scope.$apply()
-    });
+    
     
 
 

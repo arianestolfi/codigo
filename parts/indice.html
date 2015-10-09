@@ -1,0 +1,33 @@
+
+    <div id="fullpage">
+
+        <div id="faixa1" class="par fx" style:="position:relative;">
+            <section id="pagpar">
+                <div id="menupar" class="menu">
+
+                    <input type="text" class="busca" ng-model="pesquisa">
+
+                                        
+                    
+                    <ul id="indice">
+                        <li ng-repeat="item in ca_objects | filter : pesquisa | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+                            <a href="" ng-href="index.html#&revista={{item.collections}}&indice={{item.idno | filter:numberStr}}">
+                                <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" />
+                            <p class="desc"></p>
+                            </li>
+
+                    </ul>
+                    
+                    
+                    
+                </div>
+        
+            </section>
+        </div>
+   
+
+    
+
+
+    </div>
+  
