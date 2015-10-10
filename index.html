@@ -2,7 +2,7 @@
 
 <head>
     
-
+<title>mar</title>
 <link rel="icon" href="css/img/favicon.png" />
     <script src="lib/jQuery/dist/jquery.js"></script>
     <script src="lib/hamsterjs/hamster.js"></script>
@@ -19,12 +19,15 @@
     
 </head>
 
-
+<body>
     
 <section ng-controller="marController" ng-init=>
 
-<div ng-include="parts/indice.html"></div>
-
+<ng-include
+  src="'parts/indice.html'"
+  >
+...
+</ng-include>
 
 
 <!--<div id="apoio" ng-mouseleave="apoiocl='estreito'" ng-mouseenter="apoiocl='largo'" ng-class="{{apoiocl}}">
