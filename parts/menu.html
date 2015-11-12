@@ -2,10 +2,10 @@
     <div id="menuimpar" class="menu timer " ng-init="thumbs=false">
 
         <div class="zoombuttons buttons" ng-hide="thumbs">
-            <button class="zoom-out fa fa-minus"></button>
-            <button class="zoom-in fa fa-plus"></button>
-            <button class="reset fa fa-arrows-alt"></button>
-            <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==8?rd=0:''"></button>
+            <button class="zoom-out fa fa-minus" title="zoom out" alt="zoom out"></button>
+            <button class="zoom-in fa fa-plus" title="zoom in" alt="zoom in"></button>
+            <button class="reset fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
+            <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==8?rd=0:''" title="girar" alt="girar"></button>
         </div>
         
         
@@ -39,11 +39,11 @@
     <div id="imparcontroll" class="controll impar timer" >
         <div class="buttons">
 
-            <button class="prev-pag resetpar fa fa-arrow-up" ng-click="moveprev()">
+            <button class="prev-pag resetpar fa fa-arrow-up" ng-click="moveprev()" title="página anterior" alt="página anterior">
             </button>
-            <button class="next-pag resetpar resetimpar fa fa-arrow-right" ng-click="move()">
+            <button class="next-pag resetpar resetimpar fa fa-arrow-right" ng-click="move()" title="próxima dupla" alt="próxima dupla">
             </button>
-            <button class="prev-pag resetpar fa fa-arrow-down" ng-click="movenext(indice)">
+            <button class="prev-pag resetpar fa fa-arrow-down" ng-click="movenext(indice)" title="próxima página" alt="move para a próxima página">
             </button>
 
         </div>
