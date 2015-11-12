@@ -17,7 +17,7 @@
         </select>
 
 
-        <select ng-model="indice" class="control" id="listapaginas">
+        <select ng-model="indice" class="control" id="listapaginas" ng-hide="thumbs">
             <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir} " value="{{paginas.idno}}">{{$index+1}}</option>
         </select>
 
