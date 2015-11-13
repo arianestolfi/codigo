@@ -26,6 +26,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
     $scope.busca = "";
     $scope.busca2 = "";
+    //$scope.thumbs2 = false;
 
     //$scope.buscaobj = 'scripts/services/objects.json';
     //$scope.buscarev = 'scripts/services/revistas.json';
@@ -143,7 +144,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
 
     if (query) {
-
+        $scope.thumbs2 = false;
         var items = query.split("&");
         //console.log(items);
         var params = {};
@@ -167,6 +168,8 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         var parts2 = params.indice2.split("_");
         $scope.dir = parts[0];
         $scope.dir2 = parts2[0];
+    } else {
+    $scope.thumbs2 = true;
     }
 
 

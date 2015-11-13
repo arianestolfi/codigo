@@ -181,10 +181,7 @@ width: 24px;
 
 }
 
-select {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-}
+
 
 button span.glyphicon {
     position: relative;
