@@ -30,7 +30,7 @@
                     <!--<div ng-repeat="person in filtered = (data | filter: query)">-->
                         
 
-                    <option ng-repeat="paginas in (exemplar = (ca_objects | filter:{'collections':revista})) track by $index ">{{$index+1}}</option>
+                    <option ng-repeat="paginas in (exemplar = (ca_objects | filter:{'collections':revista})) track by $index " value="{{paginas.idno}}" ng-model="index">{{$index+1}}</option>
 
                 </select>
                 <select ng-model="tipo" class="nav" ng-hide="visible">

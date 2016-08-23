@@ -32,7 +32,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     //$scope.buscarev = 'scripts/services/revistas.json';
     //$scope.buscaaut = 'scripts/services/autores.json';
 
-       //$scope.buscaobj = 'http://localhost/dados/service.php/simple/objects?q=*';
+    //$scope.buscaobj = 'http://localhost/dados/service.php/simple/objects?q=*';
     //$scope.buscarev = 'http://localhost/dados/service.php/simple/revistas?q=*';
     //$scope.buscaaut = 'http://localhost/dados/service.php/simple/autores?q=*';
 
