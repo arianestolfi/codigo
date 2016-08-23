@@ -360,7 +360,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
             var nextitem2 = tamanho - 2;
         } else {
 
-            if (positem % 2 === 1) {
+            if (positem % 2 === 0) {
                 var nextitem = positem + 2;
                 var nextitem2 = positem + 1;
             } else {
@@ -396,7 +396,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         var tamanho = $scope.arrobj.length;
 
         
-        if (positem2 % 2 === 1) {
+        if (positem2 % 2 === 0) {
            var previtem2 = positem2 - 1;
             var previtem = positem2 ;
         
