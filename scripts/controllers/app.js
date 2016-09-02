@@ -71,6 +71,12 @@ app.filter('numberFixedLen', function () {
     }
 });
 
+app.filter('numberLen', function () {
+    return function (a, b) {
+        return (e4 + a + "").slice(-b)
+    }
+});
+
 app.filter('numberStr', function () {
     return function (string) {
         parseInt(number);
