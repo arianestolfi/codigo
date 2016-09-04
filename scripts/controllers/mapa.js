@@ -409,11 +409,7 @@ if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
 
 }
 
-
-
-
 }
-
 
 } else {
 nextpagnum = pagnum + 1;
@@ -436,19 +432,19 @@ $scope.indice2 = colecao + "_" + nextpagnum2;
 $scope.updateadress();
 
 
-//__________________________________________________
 
 
-
-console.log(objdir);
-console.log('pagnum' + pagnum);
-console.log(numerodepaginas);
-console.log(nextpagnum);
-console.log(nextpagnum2);
-console.log('');
-
+//console.log(objdir);
+//console.log('pagnum' + pagnum);
+//console.log(numerodepaginas);
+//console.log(nextpagnum);
+//console.log(nextpagnum2);
+//console.log('');
 }
 
+//__________________________________________________
+
+//__________________________________________________
 
 
     $scope.vai = function () {
