@@ -164,6 +164,8 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         $scope.busca2 = params.busca2;
         $scope.indice = params.indice;
         $scope.indice2 = params.indice2;
+        $scope.tipo = params.tipo;
+        $scope.tipo2 = params.tipo2;
         var parts = params.indice.split("_");
         var parts2 = params.indice2.split("_");
         $scope.dir = parts[0];
@@ -348,6 +350,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
     }
 
+//____________________________________
 
 
 $scope.duplavolta = function () {
@@ -412,8 +415,9 @@ if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
 }
 
 } else {
-nextpagnum = pagnum + 1;
-nextpagnum2 = pagnum; 
+nextpagnum = pagnum2 ;
+nextpagnum2 = pagnum2 - 1; 
+
 }
 
 
@@ -434,7 +438,7 @@ $scope.updateadress();
 
 
 
-//console.log(objdir);
+//console.log(colecao2);
 //console.log('pagnum' + pagnum);
 //console.log(numerodepaginas);
 //console.log(nextpagnum);
@@ -443,6 +447,104 @@ $scope.updateadress();
 }
 
 //__________________________________________________
+//__________________________________________________
+//__________________________________________________
+
+$scope.duplavai = function () {
+//pega o indice - pagina da direita
+var objdir = $scope.indice;
+//divide em pagina e diretorio
+var objparts = objdir.split("_");
+var pagnum = objparts[1];
+var pagnum = parseInt(pagnum);
+var colecao = objparts[0];
+
+
+//pega o indice 2 - pagina da esquerda 
+var objesq = $scope.indice2;
+//divide em pagina e diretorio
+var objparts2 = objesq.split("_");
+var pagnum2 = objparts2[1];
+var pagnum2 = parseInt(pagnum2);
+var colecao2 = objparts2[0];
+
+//diferença entre as páginas
+var diferenca = pagnum - pagnum2
+
+
+//verifica o numero de paginas da revista
+var paginasrevista = $filter('filter')($scope.arrobj, {
+            collections: colecao2
+        });
+var paginasrevista = $filter('array')(paginasrevista);
+
+var numerodepaginas = paginasrevista.length;
+//confere se par
+
+if (pagnum2 % 2 === 0) {
+// se for dupla 
+if (colecao2 === colecao & diferenca === 1) {
+        nextpagnum2 = pagnum2 + 2;
+        nextpagnum = pagnum2 + 3;
+        //se for a ultima dupla 
+        if (nextpagnum2 >= paginasrevista) {
+            nextpagnum = 1;
+        }
+
+} 
+//se nao for dupla
+else {
+
+//se for capa e contracapa 
+
+if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
+    nextpagnum = 3;
+    nextpagnum2 = 2;
+} else {
+    //se for impar reseta a dupla
+    if (pagnum2 % 2 === 1) {
+        nextpagnum = pagnum2;
+        nextpagnum2 = pagnum2 - 1; 
+    }
+
+}
+
+}
+
+
+} else {
+nextpagnum = pagnum2;
+nextpagnum2 = pagnum2 - 1; 
+}
+
+
+
+//se for a primeira pagina
+
+//se for capa/contracapa
+
+//se for par
+nextpagnum = $filter('numberFixedLen')(nextpagnum, 4); 
+nextpagnum2 = $filter('numberFixedLen')(nextpagnum2, 4);
+
+$scope.indice = colecao2 + "_" + nextpagnum;
+$scope.indice2 = colecao2 + "_" + nextpagnum2;
+
+$scope.updateadress();
+
+
+
+
+//console.log(objdir);
+//console.log('pagnum' + pagnum);
+//console.log(numerodepaginas);
+//console.log(nextpagnum);
+//console.log(nextpagnum2);
+//console.log('');
+}
+
+
+
 
 //__________________________________________________
 
@@ -642,7 +744,7 @@ $scope.volta = function () {
 
     $scope.updateadress = function () {
 
-        var newhash = "&busca2=" + $scope.busca2 + "&busca=" + $scope.busca + "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice;
+        var newhash = "&busca2=" + $scope.busca2 + "&busca=" + $scope.busca + "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice + "&tipo2=" + $scope.tipo2 + "&tipo=" + $scope.tipo;
         $location.path(newhash)
             //console.log(newhash);
 

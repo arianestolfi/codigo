@@ -10,14 +10,16 @@
         
         
 
-        <input type="text" class="busca control" ng-show="thumbs" ng-model="busca" />
+        <input type="text" class="busca control" ng-show="thumbs" ng-model="busca" placeholder="busca"/>
 
         <select ng-model="dir" class="control" id="listarevista" ng-change="udateindice()">
+            <option value="">revistas</option>
             <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
         </select>
 
 
         <select ng-model="indice" class="control" id="listapaginas" ng-hide="thumbs">
+            <option value="">pg</option>
             <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir} " value="{{paginas.idno}}">{{$index+1}}</option>
         </select>
 
@@ -28,7 +30,7 @@
         </select>
 
         <select ng-model="busca" class="control" ng-show="thumbs">
-            <option>autores</option>
+            <option value="">autores</option>
             <option ng-repeat="autor in autores">{{autor.label}}</option>
         </select>
 

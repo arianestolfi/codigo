@@ -528,12 +528,21 @@ text-align: right;
 
 #indice,
 #indice2 {
-width: 100%;
-    height: 90%;
+width: calc(100% - 5px);
+    height: calc(100% - 35px);
     overflow: auto;
     position: absolute;
     bottom: 0;
     margin-bottom: 0;
+    
+}
+
+#indice2 {
+   margin-left: 5px; 
+}
+
+#indice {
+    margin-right: 5px;
 }
 
 .thumbs {
@@ -621,7 +630,8 @@ margin-left: -50px;
 
 .parent {
 width: 100%;
-    height: 100%;
+    height: calc(100% );
+
 }
 
 .caixa {
