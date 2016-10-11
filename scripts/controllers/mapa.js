@@ -448,6 +448,103 @@ $scope.updateadress();
 
 //__________________________________________________
 //__________________________________________________
+
+$scope.duplavolta2 = function () {
+//pega o indice - pagina da direita
+var objdir = $scope.indice;
+//divide em pagina e diretorio
+var objparts = objdir.split("_");
+var pagnum = objparts[1];
+var pagnum = parseInt(pagnum);
+var colecao = objparts[0];
+
+
+//pega o indice 2 - pagina da esquerda 
+var objesq = $scope.indice2;
+//divide em pagina e diretorio
+var objparts2 = objesq.split("_");
+var pagnum2 = objparts2[1];
+var pagnum2 = parseInt(pagnum2);
+var colecao2 = objparts2[0];
+
+//diferença entre as páginas
+var diferenca = pagnum - pagnum2
+
+
+//verifica o numero de paginas da revista
+var paginasrevista = $filter('filter')($scope.arrobj, {
+            collections: colecao2
+        });
+var paginasrevista = $filter('array')(paginasrevista);
+
+var numerodepaginas = paginasrevista.length;
+
+//confere se par
+if (pagnum2 % 2 === 0) {
+// se for dupla 
+if (colecao2 === colecao & diferenca === 1) {
+        nextpagnum2 = pagnum2 - 2;
+        nextpagnum = pagnum2 - 1;
+        //se for a primeira dupla 
+        if (nextpagnum <= 1) {
+            nextpagnum2 = numerodepaginas;
+        }
+
+} 
+//se nao for dupla
+else {
+
+//se for capa e contracapa 
+
+if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
+    nextpagnum = numerodepaginas - 1;
+    nextpagnum2 = numerodepaginas - 2;
+} else {
+    //se for par reseta a dupla
+    if (pagnum2 % 2 === 0) {
+        nextpagnum = pagnum2 + 1;
+        nextpagnum2 = pagnum2; 
+    }
+
+}
+
+}
+
+} else {
+nextpagnum = pagnum2 ;
+nextpagnum2 = pagnum2 - 1; 
+
+}
+
+
+
+//se for a primeira pagina
+
+//se for capa/contracapa
+
+//se for par
+nextpagnum = $filter('numberFixedLen')(nextpagnum, 4); 
+nextpagnum2 = $filter('numberFixedLen')(nextpagnum2, 4);
+
+$scope.indice = colecao2 + "_" + nextpagnum;
+$scope.indice2 = colecao2 + "_" + nextpagnum2;
+
+$scope.updateadress();
+
+
+
+
+//console.log(colecao2);
+//console.log('pagnum' + pagnum);
+//console.log(numerodepaginas);
+//console.log(nextpagnum);
+//console.log(nextpagnum2);
+//console.log('');
+}
+
+
+
+
 //__________________________________________________
 
 $scope.duplavai = function () {
@@ -746,7 +843,8 @@ $scope.volta = function () {
 
         var newhash = "&busca2=" + $scope.busca2 + "&busca=" + $scope.busca + "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice + "&tipo2=" + $scope.tipo2 + "&tipo=" + $scope.tipo;
         $location.path(newhash)
-            //console.log(newhash);
+            //console.log($scope.tipo2);
+            alert($scope.tipo2);
 
     }
 

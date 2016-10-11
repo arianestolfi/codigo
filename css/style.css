@@ -604,12 +604,13 @@ left: 0;
 position: absolute;
 top: 0;
     right: 0;
-    height: 100%;
+    height: calc(100% - 75px);
     padding: 50px 50px 25px 50px;
     max-width: 600px;
     overflow: auto;
     text-align: left;
     background-color: #fff;
+    margin-bottom: 50px;
     
    
 }
