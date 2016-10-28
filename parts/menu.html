@@ -1,6 +1,8 @@
 <section id="pagpar" class="panpar">
     <div id="menuimpar" class="menu timer " ng-init="thumbs=false">
 
+
+        
         <div class="zoombuttons buttons" ng-hide="thumbs">
             <button class="zoom-out fa fa-minus" title="zoom out" alt="zoom out"></button>
             <button class="zoom-in fa fa-plus" title="zoom in" alt="zoom in"></button>
@@ -24,9 +26,7 @@
         </select>
 
 
-        <select class="control" ng-hide="thumbs" ng-model="tipo">
-            <option value="imagem">imagem</option>
-            <option value="texto">texto</option>
+        <select ng-model="tipo" ng-options="r.id as r.Name for r in tipos">
         </select>
 
         <select ng-model="busca" class="control" ng-show="thumbs">
@@ -62,11 +62,11 @@
     <div class="parent" ng-hide="thumbs">
         <div id="faixa" class="panzoom" style="position:relative;">
 
-            <img id="img1" ng-hide="tipo=='texto'" ng-src="../revistas/{{dir}}/tratadas/{{indice}}.png" />
+            <img id="img1" ng-hide="tipo=='1'" ng-src="../revistas/{{dir}}/tratadas/{{indice}}.png" />
 
         </div>
 
-        <div ng-show="tipo=='texto'" class="caixa" ng-repeat="info in objetos | array | filter: {'idno':indice}">
+        <div ng-show="tipo=='1'" class="caixa" ng-repeat="info in objetos | array | filter: {'idno':indice}">
 
             <div class="info" >
 
@@ -88,10 +88,10 @@
                 <a href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
                     <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
             </li>
-            <li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+            <!--<li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                 <a href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
                     <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
-            </li>
+            </li>-->
             
         </ul>
 

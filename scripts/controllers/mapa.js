@@ -64,6 +64,31 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
         // or server returns response with an error status.
 
+    $scope.buscaobj = 'scripts/services/objects.json';
+    $scope.buscaaut = 'scripts/services/autores.json';
+
+    $http({
+        method: 'GET',
+        url: $scope.buscaobj
+    }).then(function successCallback(response) {
+        //console.log(response.data);
+        $scope.objetos = response.data;
+        $scope.arrobj = $filter('array')($scope.objetos);
+        $scope.arrobj = $filter('orderBy')($scope.arrobj, 'idno');
+
+
+        $scope.edicao = $scope.arrobj;
+        $scope.edicao2 = $scope.arrobj;
+        $scope.sel = $scope.arrobj;
+        $scope.sel2 = $scope.arrobj;
+
+
+        return $scope.arrobj;
+        //console.log($scope.arrobj);
+
+    }, function errorCall(response) {
+
+    });
 
 
 
@@ -81,6 +106,19 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
     }, function errorCallback(response) {
         // or server returns response with an error status.
+        $scope.buscarev = 'scripts/services/revistas.json';
+
+        $http({
+        method: 'GET',
+        url: $scope.buscarev
+    }).then(function successCallback(response) {
+        //console.log(response.data);
+        $scope.revistas = response.data;
+
+    }, function errorCall(response) {
+
+    });
+
     });
 
 
@@ -112,13 +150,19 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
     //tipo par
     //tipo impar
-    $scope.tipo = "imagem";
+    //$scope.tipo = "imagem";
     $scope.tipo2 = "imagem";
 
     $scope.busca = "";
     $scope.busca2 = "";
 
+    $scope.tipos = [{ Name: 'texto', id: 1 },{ Name: 'imagem', id: 2 }];
+    $scope.options = [{ Name: 'imagem', id: 2 }];
+    $scope.tipo = $scope.options[0].id;
 
+    //console.log($scope.tipo);
+
+    //$scope.test = 'bla';
 
 
     //estilo pagina par (zoom)
@@ -170,6 +214,9 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         var parts2 = params.indice2.split("_");
         $scope.dir = parts[0];
         $scope.dir2 = parts2[0];
+        $scope.pagnum = parts[1];
+        $scope.pagnum = parseInt;
+
     } else {
     $scope.thumbs2 = true;
     }
@@ -447,6 +494,11 @@ $scope.updateadress();
 }
 
 //__________________________________________________
+
+
+
+
+
 //__________________________________________________
 
 $scope.duplavolta2 = function () {
@@ -642,11 +694,111 @@ $scope.updateadress();
 
 
 
+//_________________________________________________
+
+$scope.vai = function () {
+//pega o indice - pagina da direita
+var objdir = $scope.indice;
+//divide em pagina e diretorio
+var objparts = objdir.split("_");
+var pagnum = objparts[1];
+var pagnum = parseInt(pagnum);
+var colecao = objparts[0];
+
+
+//pega o indice 2 - pagina da esquerda 
+var objesq = $scope.indice2;
+//divide em pagina e diretorio
+var objparts2 = objesq.split("_");
+var pagnum2 = objparts2[1];
+var pagnum2 = parseInt(pagnum2);
+var colecao2 = objparts2[0];
+
+//diferença entre as páginas
+var diferenca = pagnum - pagnum2
+
+
+//verifica o numero de paginas da revista
+var paginasrevista = $filter('filter')($scope.arrobj, {
+            collections: colecao2
+        });
+var paginasrevista = $filter('array')(paginasrevista);
+
+var numerodepaginas = paginasrevista.length;
+//confere se impar
+
+if (pagnum % 2 === 1) {
+// se for dupla 
+if (colecao2 === colecao & diferenca === 1) {
+        nextpagnum2 = pagnum + 1;
+        nextpagnum = pagnum + 2;
+        //se for a ultima dupla 
+        if (nextpagnum2 >= paginasrevista) {
+            nextpagnum = 1;
+        }
+
+} 
+//se nao for dupla
+else {
+
+//se for capa e contracapa 
+
+if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
+    nextpagnum = 3;
+    nextpagnum2 = 2;
+} else {
+    //se for impar reseta a dupla
+    if (pagnum2 % 2 === 1) {
+        nextpagnum = pagnum + 1;
+        nextpagnum2 = pagnum; 
+    }
+
+}
+
+}
+
+
+} else {
+nextpagnum = pagnum + 1;
+nextpagnum2 = pagnum; 
+}
+
+
+
+//se for a primeira pagina
+
+//se for capa/contracapa
+
+//se for par
+nextpagnum = $filter('numberFixedLen')(nextpagnum, 4); 
+nextpagnum2 = $filter('numberFixedLen')(nextpagnum2, 4);
+
+$scope.indice = colecao2 + "_" + nextpagnum;
+$scope.indice2 = colecao2 + "_" + nextpagnum2;
+
+$scope.updateadress();
+
+
+
+
+//console.log(objdir);
+//console.log('pagnum' + pagnum);
+//console.log(numerodepaginas);
+//console.log(nextpagnum);
+//console.log(nextpagnum2);
+//console.log('');
+}
+
+
+
+//_________________________________________________
+
+
 
 //__________________________________________________
 
 
-    $scope.vai = function () {
+    $scope.vai2 = function () {
 
         var positem = findinarray($scope.edicao, 'idno', $scope.indice);
         
@@ -841,10 +993,11 @@ $scope.volta = function () {
 
     $scope.updateadress = function () {
 
-        var newhash = "&busca2=" + $scope.busca2 + "&busca=" + $scope.busca + "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice + "&tipo2=" + $scope.tipo2 + "&tipo=" + $scope.tipo;
-        $location.path(newhash)
-            //console.log($scope.tipo2);
-            alert($scope.tipo2);
+        //var newhash = "&busca2=" + $scope.busca2 + "&busca=" + $scope.busca + "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice + "&tipo2=" + $scope.tipo2 + "&tipo=" + $scope.tipo;
+        var newhash = "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice; 
+        $location.path(newhash);
+            console.log($scope.arrobj);
+            //alert($scope.arrobj);
 
     }
 

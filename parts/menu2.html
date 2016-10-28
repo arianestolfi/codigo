@@ -88,10 +88,10 @@
                 <a href="" ng-href="index.html#&busca2={{busca2}}&busca={{busca}}&indice2={{item.idno}}&indice={{indice}}">
                     <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
             </li>
-            <li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca2 | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+            <!--<li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca2 | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                 <a href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
                     <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
-            </li>
+            </li>-->
         </ul>
 
     </div>
