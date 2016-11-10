@@ -5,7 +5,8 @@
 
         <input type="text" class="busca control" ng-show="thumbs2" ng-model="busca2" value="busca" alt="busca" placeholder="busca">
 
-        <select ng-hide="thumbs2" ng-model="dir2" class="control" id="listarevista" ng-change="udateindice2()">
+        <!--<select ng-hide="thumbs2" ng-model="dir2" class="control" id="listarevista" ng-change="udateindice2()">-->
+        <select ng-hide="thumbs2" ng-model="busca2" class="control" id="listarevista" ng-change="thumbs2=true">
             <option value="">revistas</option>
             <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
         </select>
@@ -14,11 +15,12 @@
             <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
         </select>
 
+<!--
         <select ng-model="indice2" class="control" id="listapaginas" ng-hide="thumbs2">
             <option value="">pg</option>
             <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir2} " value="{{paginas.idno}}">{{$index+1}}</option>
         </select>
-
+-->
 
         <select class="control" ng-hide="thumbs2" ng-model="tipo2" class="fa fa-caret-down control">
             <option value="imagem">imagem</option>
@@ -30,28 +32,35 @@
              <option ng-repeat="autor in autores">{{autor.label}}</option>
         </select>
 
+<!--
         <div class="zoombuttons buttons" ng-hide="thumbs2">
             <button class="zoom-out fa fa-minus" title="zoom out" alt="zoom out"></button>
             <button class="zoom-in fa fa-plus" title="zoom in" alt="zoom in"></button>
             <button class="reset fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
             <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img2'+ $index,rd);rd=rd+1;rd==8?rd=0:''" title="girar" alt="girar"></button>
         </div>
-
+-->
     </div>
 
     <div id="parcontroll" class="controll par timer" ng-hide="thumbs2">
         <div class="buttons">
-
+            <button class="next-pag reset2 resetpar fa fa-arrow-left" ng-click="duplavolta2()" title="dupla anterior" alt="move para a dupla anterior">
+            </button>
+            <button class="next-pag reset2 resetpar fa fa-arrow-right" ng-click="duplavai()" title="dupla anterior" alt="move para a dupla anterior">
+            </button>
+            <br/><br/>
             <button class="prev-pag reset2 fa fa-arrow-up" ng-click="moveprev2()" title="página anterior" alt="move para a página anterior">
             </button>
             
             <button class="prev-pag reset2 fa fa-arrow-down" ng-click="movenext2()" title="próxima página" alt="move para a próxima página">
             </button>
+            <br/><br/>
+            
 
-            <button class="next-pag reset2 resetpar fa fa-arrow-left" ng-click="duplavolta2()" title="dupla anterior" alt="move para a dupla anterior">
-            </button>
-            <button class="next-pag reset2 resetpar fa fa-arrow-right" ng-click="duplavai()" title="dupla anterior" alt="move para a dupla anterior">
-            </button>
+            <button class="zoom-out fa fa-minus" title="zoom out" alt="zoom out"></button>
+            <button class="zoom-in fa fa-plus" title="zoom in" alt="zoom in"></button>
+            <button class="reset fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
+            <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img2'+ $index,rd);rd=rd+1;rd==8?rd=0:''" title="girar" alt="girar"></button>
 
         </div>
     </div>

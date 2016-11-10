@@ -160,6 +160,15 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     $scope.options = [{ Name: 'imagem', id: 2 }];
     $scope.tipo = $scope.options[0].id;
 
+        $scope.parts = $scope.indice.split("_");
+        $scope.parts2 = $scope.indice2.split("_");
+        $scope.dir = $scope.parts[0];
+        $scope.dir2 = $scope.parts2[0];
+        $scope.pagnum = $scope.parts[1];
+        //$scope.pagnum = parseInt;
+        $scope.pagnum2 = $scope.parts2[1];
+        //$scope.pagnum2 = parseInt;
+
     //console.log($scope.tipo);
 
     //$scope.test = 'bla';
@@ -216,6 +225,8 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
         $scope.dir2 = parts2[0];
         $scope.pagnum = parts[1];
         $scope.pagnum = parseInt;
+        $scope.pagnum2 = parts2[1];
+        $scope.pagnum2 = parseInt;
 
     } else {
     $scope.thumbs2 = true;
