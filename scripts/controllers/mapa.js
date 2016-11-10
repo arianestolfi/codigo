@@ -648,19 +648,24 @@ var numerodepaginas = paginasrevista.length;
 
 if (pagnum2 % 2 === 0) {
 // se for dupla 
+
+controle = numerodepaginas - 2;
+
 if (colecao2 === colecao & diferenca === 1) {
+    //se for a ultima dupla
+    if (pagnum2 === controle) {
+        nextpagnum = 1;
+        nextpagnum2 = numerodepaginas
+
+    } else {
         nextpagnum2 = pagnum2 + 2;
         nextpagnum = pagnum2 + 3;
-        //se for a ultima dupla 
-        if (nextpagnum2 >= paginasrevista) {
-            nextpagnum = 1;
-        }
-
+    }
 } 
-//se nao for dupla
-else {
+    //se nao for dupla
+        else {
 
-//se for capa e contracapa 
+    //se for capa e contracapa 
 
 if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
     nextpagnum = 3;
