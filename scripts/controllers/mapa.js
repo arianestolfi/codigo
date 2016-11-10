@@ -762,6 +762,9 @@ if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
         nextpagnum = pagnum + 1;
         nextpagnum2 = pagnum;
         //alert('4'); 
+    } else {
+        nextpagnum = pagnum;
+        nextpagnum2 = pagnum - 1; 
     }
 
 }
