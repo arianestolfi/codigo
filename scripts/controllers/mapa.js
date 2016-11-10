@@ -687,6 +687,7 @@ $scope.updateadress();
 //console.log(objdir);
 //console.log('pagnum' + pagnum);
 //console.log(numerodepaginas);
+//alert(numerodepaginas);
 //console.log(nextpagnum);
 //console.log(nextpagnum2);
 //console.log('');
@@ -725,16 +726,24 @@ var paginasrevista = $filter('filter')($scope.arrobj, {
 var paginasrevista = $filter('array')(paginasrevista);
 
 var numerodepaginas = paginasrevista.length;
+
 //confere se impar
 
 if (pagnum % 2 === 1) {
 // se for dupla 
 if (colecao2 === colecao & diferenca === 1) {
-        nextpagnum2 = pagnum + 1;
-        nextpagnum = pagnum + 2;
+        controle = numerodepaginas - 1;
+
         //se for a ultima dupla 
-        if (nextpagnum2 >= paginasrevista) {
+        if (pagnum === controle) {
             nextpagnum = 1;
+            nextpagnum2 = pagnum + 1;
+            //alert('2');
+        } else {
+         nextpagnum2 = pagnum + 1;
+        nextpagnum = pagnum + 2;
+        
+        //alert('1');   
         }
 
 } 
@@ -746,11 +755,13 @@ else {
 if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
     nextpagnum = 3;
     nextpagnum2 = 2;
+    //alert('3');
 } else {
     //se for impar reseta a dupla
     if (pagnum2 % 2 === 1) {
         nextpagnum = pagnum + 1;
-        nextpagnum2 = pagnum; 
+        nextpagnum2 = pagnum;
+        //alert('4'); 
     }
 
 }
@@ -759,8 +770,13 @@ if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
 
 
 } else {
+//se for par
+
 nextpagnum = pagnum + 1;
 nextpagnum2 = pagnum; 
+colecao2 = colecao;
+//alert('5');
+
 }
 
 
@@ -770,11 +786,11 @@ nextpagnum2 = pagnum;
 //se for capa/contracapa
 
 //se for par
-nextpagnum = $filter('numberFixedLen')(nextpagnum, 4); 
-nextpagnum2 = $filter('numberFixedLen')(nextpagnum2, 4);
+nextpagstr = $filter('numberFixedLen')(nextpagnum, 4); 
+nextpagstr2 = $filter('numberFixedLen')(nextpagnum2, 4);
 
-$scope.indice = colecao2 + "_" + nextpagnum;
-$scope.indice2 = colecao2 + "_" + nextpagnum2;
+$scope.indice = colecao + "_" + nextpagstr;
+$scope.indice2 = colecao + "_" + nextpagstr2;
 
 $scope.updateadress();
 
@@ -783,8 +799,8 @@ $scope.updateadress();
 
 //console.log(objdir);
 //console.log('pagnum' + pagnum);
-//console.log(numerodepaginas);
-//console.log(nextpagnum);
+console.log(numerodepaginas);
+//console.log('pimpar' + nextpagnum);
 //console.log(nextpagnum2);
 //console.log('');
 }
@@ -996,7 +1012,7 @@ $scope.volta = function () {
         //var newhash = "&busca2=" + $scope.busca2 + "&busca=" + $scope.busca + "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice + "&tipo2=" + $scope.tipo2 + "&tipo=" + $scope.tipo;
         var newhash = "&indice2=" + $scope.indice2 + "&indice=" + $scope.indice; 
         $location.path(newhash);
-            console.log($scope.arrobj);
+            //console.log($scope.arrobj);
             //alert($scope.arrobj);
 
     }
