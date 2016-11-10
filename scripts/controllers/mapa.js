@@ -433,13 +433,18 @@ var numerodepaginas = paginasrevista.length;
 
 if (pagnum % 2 === 1) {
 // se for dupla 
-if (colecao === colecao & diferenca === 1) {
+if (colecao === colecao2 & diferenca === 1) {
+    if (pagnum === 3) {
+        nextpagnum = 1;
+        nextpagnum2 = numerodepaginas;
+        } else {
         nextpagnum2 = pagnum - 3;
         nextpagnum = pagnum - 2;
-        //se for a primeira dupla 
-        if (nextpagnum <= 1) {
-            nextpagnum2 = numerodepaginas;
         }
+        
+        //alert('1')
+        //se for a primeira dupla 
+        
 
 } 
 //se nao for dupla
@@ -452,10 +457,23 @@ if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
     nextpagnum2 = numerodepaginas - 2;
 } else {
     //se for impar reseta a dupla
+
+if (pagnum === 1) {
+     nextpagnum = 1;
+     nextpagnum2 = numerodepaginas;
+
+} else {
     if (pagnum % 2 === 1) {
         nextpagnum = pagnum;
         nextpagnum2 = pagnum - 1; 
     }
+
+}
+
+
+
+
+
 
 }
 
