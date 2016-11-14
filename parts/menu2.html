@@ -20,12 +20,17 @@
             <option value="">pg</option>
             <option ng-repeat="paginas in objetos | array |  filter:{'collections':dir2} " value="{{paginas.idno}}">{{$index+1}}</option>
         </select>
--->
+
 
         <select class="control" ng-hide="thumbs2" ng-model="tipo2" class="fa fa-caret-down control">
             <option value="imagem">imagem</option>
             <option value="texto">texto</option>
         </select>
+-->
+<span ng-hide="thumbs2">
+        <button ng-init="tipo2='imagem'" class="control" ng-click="tipo2='texto'" ng-show="tipo2=='imagem'">texto</button>
+        <button class="control" ng-click="tipo2='imagem'" ng-hide="tipo2=='imagem'">imagem</button>
+</span>
 
         <select ng-model="busca2" class="control" ng-show="thumbs2" alt="autores">
              <option value="">autores</option>
@@ -71,7 +76,7 @@
     <div class="parent" ng-hide="thumbs2">
         <div id="faixa" class="panzoom" style="position:relative;">
 
-            <img id="img2" ng-hide="tipo2=='texto'" ng-src="../revistas/{{dir2}}/tratadas/{{indice2}}.png">
+            <img id="img2" ng-show="tipo2=='imagem'" ng-src="../revistas/{{dir2}}/tratadas/{{indice2}}.png">
 
         </div>
 
@@ -90,11 +95,16 @@
 
     </div>
 
+
 <div id="miniaturas2" class="miniaturas" ng-show="thumbs2">
         <ul id="indice2">
 
             <li ng-repeat="item in objetos | array | filter: 'codigo' | filter : busca2 | orderBy:'idno'"  ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
-                <a href="" ng-href="index.html#&busca2={{busca2}}&busca={{busca}}&indice2={{item.idno}}&indice={{indice}}">
+                <a class="miniatura" href="" ng-href="index.html#&busca2={{busca2}}&busca={{busca}}&indice2={{item.idno}}&indice={{indice}}">
+                        <div class="titulo">
+                            <p class="">{{item.entities}}</p>
+                            <p class="">{{item.display_label}}</p>
+                        </div>
                     <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
             </li>
             <!--<li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca2 | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
@@ -141,7 +151,10 @@
 
 
     
-
+<div id="apoio" class="timer" >
+   <div class="vertical apoio " >apoio</div> 
+  
+</div>  
 
 
 

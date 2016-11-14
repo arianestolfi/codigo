@@ -23,6 +23,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
     //tipo impar
     $scope.tipo = "imagem";
     $scope.tipo2 = "imagem";
+    //console.log($scope.tipo);
 
     $scope.busca = "";
     $scope.busca2 = "";
@@ -150,7 +151,7 @@ app.controller('mapaController', ['$scope', '$window', '$http', '$location', '$f
 
     //tipo par
     //tipo impar
-    //$scope.tipo = "imagem";
+    $scope.tipo = "imagem";
     $scope.tipo2 = "imagem";
 
     $scope.busca = "";
