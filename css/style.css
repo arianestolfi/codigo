@@ -25,6 +25,10 @@ a {
 a:visited {
     color: #666;
 }
+
+img {
+    color: #fff;
+}
 .pag {
     position: absolute;
     top: 0;
