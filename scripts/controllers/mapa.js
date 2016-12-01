@@ -717,8 +717,8 @@ $scope.updateadress();
 
 
 
-//console.log(objdir);
-//console.log('pagnum' + pagnum);
+console.log(controle);
+console.log('pagnum' + pagnum);
 //console.log(numerodepaginas);
 //alert(numerodepaginas);
 //console.log(nextpagnum);
