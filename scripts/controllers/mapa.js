@@ -728,6 +728,8 @@ console.log(controle);
 console.log('pagnum' + pagnum);
 console.log(numerodepaginas);
 console.log(paginasrevista);
+console.log($scope.arrobj);
+console.log(colecao2);
 //alert(numerodepaginas);
 //console.log(nextpagnum);
 //console.log(nextpagnum2);
