@@ -719,7 +719,7 @@ $scope.updateadress();
 
 console.log(controle);
 console.log('pagnum' + pagnum);
-//console.log(numerodepaginas);
+console.log(numerodepaginas);
 //alert(numerodepaginas);
 //console.log(nextpagnum);
 //console.log(nextpagnum2);
