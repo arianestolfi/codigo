@@ -8,7 +8,7 @@
         <!--<select ng-hide="thumbs2" ng-model="dir2" class="control" id="listarevista" ng-change="udateindice2()">-->
         <select ng-hide="thumbs2" ng-model="busca2" class="control" id="listarevista" ng-change="thumbs2=true">
             <option value="">revistas</option>
-            <option ng-repeat="revista in revistas | array | orderBy:'idno'">{{revista.idno}}</option>
+            <option ng-repeat="revista in revistas | array | ord erBy:'idno'">{{revista.idno}}</option>
         </select>
 <select ng-show="thumbs2" ng-model="busca2" class="control" id="listarevista" ng-change="">
         <option value="">revistas</option>

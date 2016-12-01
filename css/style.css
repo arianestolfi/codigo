@@ -533,6 +533,7 @@ float: left;
 }
 
 .miniaturas .titulo {
+    display: none;
     font-size: 9pt;
     color:#fff;
     position: absolute;
@@ -543,6 +544,7 @@ float: left;
 }
 
 .miniatura:hover .titulo{
+    display: visible;
     background-color: #fff;
     color: #000;
     z-index: 10;
