@@ -683,13 +683,20 @@ if (colecao === colecao2 & pagnum === 1 & pagnum2 === numerodepaginas) {
     nextpagnum = 3;
     nextpagnum2 = 2;
 } else {
+    
+    //
+
     //se for impar reseta a dupla
+
     if (pagnum2 % 2 === 1) {
         nextpagnum = pagnum2;
         nextpagnum2 = pagnum2 - 1; 
+    } else {
+        nextpagnum = 1;
+        nextpagnum2 = 2;
     }
 
-}
+} 
 
 }
 
