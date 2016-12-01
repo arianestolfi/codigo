@@ -36,7 +36,7 @@
 
         <select ng-model="busca" class="control" ng-show="thumbs">
             <option value="">autores</option>
-            <option ng-repeat="autor in autores">{{autor.label}}</option>
+            <option ng-repeat="autor in autores | orderBy:'label'">{{autor.label}}</option>
         </select>
 
         <button class="control" ng-click="thumbs=true" ng-hide="thumbs">índice</button>
