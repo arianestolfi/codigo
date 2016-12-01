@@ -727,6 +727,7 @@ $scope.updateadress();
 console.log(controle);
 console.log('pagnum' + pagnum);
 console.log(numerodepaginas);
+controle.log(paginasrevista);
 //alert(numerodepaginas);
 //console.log(nextpagnum);
 //console.log(nextpagnum2);
