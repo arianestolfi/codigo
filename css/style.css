@@ -188,7 +188,13 @@ width: 24px;
 
 }
 
+.autores {
+    text-align: left;
+}
 
+.autores option {
+    padding-left: 5px;
+}
 
 button span.glyphicon {
     position: relative;
