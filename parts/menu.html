@@ -69,7 +69,6 @@
             <button class="zoom-out fa fa-minus" title="zoom out" alt="zoom out"></button>
             <button class="zoom-in fa fa-plus" title="zoom in" alt="zoom in"></button>
 
-            <button class="reset fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
             <button class="reset fa fa-arrows-alt" title="tela cheia" alt="ajustar zoom"></button>
             <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==8?rd=0:''" title="girar" alt="girar"></button>
             <button class="fa-resize-full" ng-click="movenext(indice)" title="próxima página" alt="move para a próxima página" ng-hide="proporcao>1">
@@ -84,7 +83,7 @@
     <div class="parent" ng-hide="thumbs">
         <div id="faixa" class="panzoom" style="position:relative;">
 
- </div>
+
 
              <img id="img1" ng-hide="sobre" ng-show="tipo=='imagem'" ng-src="../revistas/{{dir}}/tratadas/{{indice}}.png" />
         </div>
