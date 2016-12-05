@@ -70,7 +70,7 @@
 
             <button class="zoom-out fa fa-minus" title="zoom out" alt="zoom out"></button>
             <button class="zoom-in fa fa-plus" title="zoom in" alt="zoom in"></button>
-            <button class="reset fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
+            <button class="reset2 fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
             <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img2'+ $index,rd);rd=rd+1;rd==8?rd=0:''" title="girar" alt="girar"></button>
 
         </div>
@@ -134,10 +134,10 @@
                 $zoomIn: $section.find(".zoom-in"),
                 $zoomOut: $section.find(".zoom-out"),
                 $zoomRange: $section.find(".zoom-range"),
-                $reset: $(".reset"),
+                $reset: $(".reset2"),
                 startTransform: 'scale(1)',
                 maxScale: 50,
-                increment: 0.5,
+                increment: 0.25,
             });
 
             $panzoom.parent().on('mousewheel.focal', function(e) {
