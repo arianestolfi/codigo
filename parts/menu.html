@@ -1,5 +1,5 @@
 <section id="pagpar" class="panpar">
-    <div id="menuimpar" class="menu timer " ng-init="thumbs=false">
+    <div id="menuimpar" class="menu timer " ng-init="thumbs=false" ng-init="sobre=false">
 
 
         <!--
@@ -9,15 +9,19 @@
             <button class="reset fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
             <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==8?rd=0:''" title="girar" alt="girar"></button>
         </div>
-        -->
+        -->         
+
+
 <span ng-hide="thumbs">
-        <button ng-init="tipo='imagem'" class="control" ng-click="tipo='texto'" ng-show="tipo=='imagem'">texto</button>
-        <button class="control" ng-click="tipo='imagem'" ng-hide="tipo=='imagem'">imagem</button>
+        <button ng-init="tipo='imagem'" class="control" ng-click="tipo='texto';sobre=false" ng-show="tipo=='imagem'">texto</button>
+        <button class="control" ng-click="tipo='imagem';sobre=false" ng-hide="tipo=='imagem'">imagem</button>
 </span>
 
+
+        
         <input type="text" class="busca control" ng-show="thumbs" ng-model="busca" placeholder="busca"/>
 
-        <select  ng-model="busca" class="control" id="listarevista" ng-change="thumbs=true">
+        <select  ng-model="busca" class="control" id="listarevista" ng-change="thumbs=true;sobre=false">
        <!-- <select ng-model="dir" class="control" id="listarevista" ng-change="udateindice()"> -->
             <option value="">revistas</option>
             <option ng-repeat="revista in revistas | array | filter:'!cartas' |  filter:'!sobre' |orderBy:'idno'">{{revista.idno}}</option>
@@ -39,12 +43,14 @@
             <option ng-repeat="autor in autores | array | orderBy:'label'">{{autor.label}}</option>
         </select>
 
-        <button class="control" ng-click="thumbs=true" ng-hide="thumbs">índice</button>
+        <button class="control" ng-click="thumbs=true;sobre=false" ng-hide="thumbs">índice</button>
 
     </div>
 
-    <div id="imparcontroll" class="controll impar timer" >
+    <div id="imparcontroll" class="controll impar timer" ng-hide="thumbs">
         <div class="buttons">
+<div ng-hide="thumbs" class="codigo vertical" ng-repeat="info in objetos | array | filter: {'idno':indice}">{{info.idno}}</div>
+
             <button class="next-pag resetpar resetimpar fa fa-arrow-right" ng-click="vai()" title="próxima dupla" alt="próxima dupla" ng-show="proporcao>1">
             </button>
 
@@ -62,8 +68,12 @@
             
             <button class="zoom-out fa fa-minus" title="zoom out" alt="zoom out"></button>
             <button class="zoom-in fa fa-plus" title="zoom in" alt="zoom in"></button>
+
             <button class="reset fa fa-arrows-alt" title="ajustar zoom" alt="ajustar zoom"></button>
+            <button class="reset fa fa-arrows-alt" title="tela cheia" alt="ajustar zoom"></button>
             <button class="fa fa-rotate-right" id="rotateIcon" data-ng-init="rd=1;" data-ng-click="RotateImage('img1'+ $index,rd);rd=rd+1;rd==8?rd=0:''" title="girar" alt="girar"></button>
+            <button class="fa-resize-full" ng-click="movenext(indice)" title="próxima página" alt="move para a próxima página" ng-hide="proporcao>1">
+            </button>
 
         </div>
     </div>
@@ -73,7 +83,10 @@
 
     <div class="parent" ng-hide="thumbs">
         <div id="faixa" class="panzoom" style="position:relative;">
-             <img id="img1" ng-show="tipo=='imagem'" ng-src="../revistas/{{dir}}/tratadas/{{indice}}.png" />
+
+ </div>
+
+             <img id="img1" ng-hide="sobre" ng-show="tipo=='imagem'" ng-src="../revistas/{{dir}}/tratadas/{{indice}}.png" />
         </div>
 
         <div ng-show="tipo=='texto'" class="caixa" ng-repeat="info in objetos | array | filter: {'idno':indice}">
@@ -85,7 +98,14 @@
             </div>
 
 
+
         </div>
+
+          <div ng-show="sobre" id="textohome" ng-repeat="info in objetos | array | filter: {'idno':'sobre_0001'}">
+            <div class="info help" >
+                <h3 class="titulo">{{info.display_label}}</h3>
+                <article class="description" ng-bind-html="info.description | rawHtml"></article>
+            </div>
 
     </div>
 
@@ -93,13 +113,15 @@
         <ul id="indice">
 
             <li ng-repeat="item in objetos | array | filter: 'codigo' | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'"  ng-class-even="'minmpar'">
-                <a class="miniatura" href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
+                <a class="miniatura" href="" ng-href="index.html#indice={{item.idno}}&indice2={{indice2}}">
                         <div class="titulo">
                             <p class="">{{item.entities}}</p>
                             <p class="">{{item.display_label}}</p>
                         </div>
                         
-                    <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/></a>
+                    <img ng-src="../revistas/{{item.collections}}/thumbs/{{item.idno}}.png" alt="{{item.display_label}}"/>
+
+                </a>
             </li>
             <!--<li ng-repeat="item in objetos | array | filter: 'cartas' | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                 <a href="" ng-href="index.html#&busca={{busca}}&busca2={{busca2}}&indice={{item.idno}}&indice2={{indice2}}">
@@ -109,9 +131,17 @@
         </ul>
 
     </div>
+
+   
     
-    
-    
+<div id="sobre" ng-hide="sobre" ng-click="sobre=true;thumbs=false">
+<div class="vertical sobre" >sobre</div>
+</div>
+<div id="sobre" ng-show="sobre" ng-click="sobre=false">
+<div class="vertical sobre" >x</div>
+</div>
+  
+
     
     
     

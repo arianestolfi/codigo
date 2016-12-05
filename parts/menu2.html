@@ -32,10 +32,13 @@
         <button class="control" ng-click="tipo2='imagem'" ng-hide="tipo2=='imagem'">imagem</button>
 </span>
 
-        <select ng-model="busca2" class="control" ng-show="thumbs2" alt="autores">
-             <option value="">autores</option>
-             <option ng-repeat="autor in autores |array |orderBy:'label'">{{autor.label}}</option>
+
+
+        <select ng-model="busca2" class="control autores" ng-show="thumbs2">
+            <option value="">autores</option>
+            <option ng-repeat="autor in autores | array | orderBy:'label'">{{autor.label}}</option>
         </select>
+
 
 <!--
         <div class="zoombuttons buttons" ng-hide="thumbs2">
@@ -48,6 +51,9 @@
     </div>
 
     <div id="parcontroll" class="controll par timer" ng-hide="thumbs2">
+
+<div ng-hide="thumbs" class="codigo vertical" ng-repeat="info in objetos | array | filter: {'idno':indice2}">{{info.idno}}</div>
+
         <div class="buttons">
             <button class="next-pag reset2 resetpar fa fa-arrow-left" ng-click="duplavolta2()" title="dupla anterior" alt="move para a dupla anterior" ng-show="proporcao>1">
             </button>

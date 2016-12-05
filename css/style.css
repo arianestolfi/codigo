@@ -178,6 +178,7 @@ width: 24px;
     border-radius: 0px;
     margin-bottom: 0px;
     text-align: center;
+    font-size: 12px;
     
 }
 
@@ -186,6 +187,11 @@ width: 24px;
     color: #fff;
     border-color: red;
 
+}
+
+.codigo {
+    font-size: 12px;
+    z-index: 0;
 }
 
 .autores {
@@ -471,6 +477,59 @@ border-top-right-radius: 0px;
     
 }
 
+#sobre {
+height:50px;
+width:25px;
+    margin: 0 5px 0px 0;
+    z-index: 500;
+    background-color: #fff;
+    border: 1px solid black; 
+    border-bottom: 0;
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-property: width, height, border-radius, margin;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+    
+    
+}
+
+#sobre:hover {
+    background-color: #f00;
+    color: #fff;
+    border: 1px solid #f00;
+}
+
+.sobre {
+    position: relative;
+    top: 40px;
+    font-size: 10px;
+}
+
+.help {
+    height: 100%;
+    min-width: 25px;
+    width: calc(100%-75px);
+
+}
+
+#textohome {
+       position: absolute;
+       top: 0;
+       left: 0;
+       height: 100%;
+       width: 100%;
+       overflow: auto;
+       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+box-sizing: border-box;         /* Opera/IE 8+ */
+
+}
+
+
+
 .vertical {
    -ms-transform: rotate(270deg); /* IE 9 */
     -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
@@ -501,7 +560,7 @@ border-top-right-radius: 0px;
 
 .apoio {
 position: relative;
-    top: 40px;
+    top: 40px;s
     right: -2px;
     font-size: 10px;
 }
@@ -598,24 +657,25 @@ z-index: 600;
 }
 
 #slider {
-width: 50px;
+    width: 27px;
     height: 100%;
-background-color:transparent;
+    background-color:transparent;
     position: absolute;
     left: 50%;
-z-index: 600;
+    z-index: 600;
     cursor: ew-resize;
 }
 
 #slider:hover {
+    border-left: 1px solid black;
 }
 
 
 
 #slider .control {
     position: absolute;
-margin-top: 5px;
-    margin-left: 5px;
+    margin-top: 0px;
+    margin-left: 0px;
     line-height: 25px;
     bottom: 0px;
 }
