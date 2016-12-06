@@ -49,7 +49,7 @@
 
     <div id="imparcontroll" class="controll impar timer" ng-hide="thumbs">
         <div class="buttons">
-<div ng-hide="thumbs" class="codigo vertical" ng-repeat="info in objetos | array | filter: {'idno':indice}">{{info.idno}}</div>
+        <div ng-hide="thumbs" class="codigo vertical" ng-repeat="info in objetos | array | filter: {'idno':indice}">{{info.idno}}</div>
 
             <button class="next-pag resetpar resetimpar fa fa-arrow-right" ng-click="vai()" title="próxima dupla" alt="próxima dupla" ng-show="proporcao>1">
             </button>
@@ -62,7 +62,7 @@
             <button class="prev-pag resetpar fa fa-arrow-up" ng-click="moveprev()" title="página anterior" alt="página anterior" ng-hide="proporcao>1">
             </button>
             
-            <button class="prev-pag resetpar fa fa-arrow-down" ng-click="movenext(indice)" title="próxima página" alt="move para a próxima página" ng-hide="proporcao>1">
+            <button class="prev-pag resetpar fa fa-arrow-down" ng-click="movenext()" title="próxima página" alt="move para a próxima página" ng-hide="proporcao>1">
             </button>
             <br/><br/>
             
@@ -80,8 +80,8 @@
 
 
 
-    <div class="parent" ng-hide="thumbs">
-        <div id="faixa" class="panzoom" style="position:relative;">
+    <div class="parent" >
+        <div id="faixa" ng-hide="thumbs" class="panzoom" style="position:relative;">
 
 
 
@@ -108,11 +108,12 @@
 
     </div>
 
+
 <div id="miniaturaspar" class="miniaturas" ng-show="thumbs">
         <ul id="indice">
 
             <li ng-repeat="item in objetos | array | filter: 'codigo' | filter : busca | orderBy:'idno'" ng-class-odd="'minimpar'"  ng-class-even="'minmpar'">
-                <a class="miniatura" href="" ng-href="index.html#indice={{item.idno}}&indice2={{indice2}}">
+                <a class="miniatura" href="" ng-href="index.html#&indice={{item.idno}}&indice2={{indice2}}">
                         <div class="titulo">
                             <p class="">{{item.entities}}</p>
                             <p class="">{{item.display_label}}</p>
@@ -131,7 +132,7 @@
 
     </div>
 
-   
+  </div> 
     
 <div id="sobre" ng-hide="sobre" ng-click="sobre=true;thumbs=false">
 <div class="vertical sobre" >sobre</div>
