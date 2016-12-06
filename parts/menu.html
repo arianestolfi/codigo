@@ -80,8 +80,8 @@
 
 
 
-    <div class="parent" >
-        <div id="faixa" ng-hide="thumbs" class="panzoom" style="position:relative;">
+    <div class="parent" ng-hide="thumbs">
+        <div id="faixa"  class="panzoom" style="position:relative;">
 
 
 
@@ -99,6 +99,8 @@
 
 
         </div>
+
+    </div>
 
           <div ng-show="sobre" id="textohome" ng-repeat="info in objetos | array | filter: {'idno':'sobre_0001'}">
             <div class="info help" >
@@ -132,7 +134,7 @@
 
     </div>
 
-  </div> 
+ 
     
 <div id="sobre" ng-hide="sobre" ng-click="sobre=true;thumbs=false">
 <div class="vertical sobre" >sobre</div>
