@@ -105,7 +105,7 @@
 <div id="miniaturas2" class="miniaturas" ng-show="thumbs2">
         <ul id="indice2">
 
-            <li ng-repeat="item in objetos | array | filter: 'codigo' | filter : busca2 | orderBy:'idno'"  ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
+            <li ng-repeat="item in objetos | array | filter: 'codigo' | filter:'!sobre_0001'| filter : busca2 | orderBy:'idno'"  ng-class-odd="'minimpar'" ng-class-even="'minmpar'">
                 <a class="miniatura" href="" ng-href="index.html#&busca2={{busca2}}&busca={{busca}}&indice2={{item.idno}}&indice={{indice}}">
                         <div class="titulo">
                             <p class="">{{item.entities}}</p>
